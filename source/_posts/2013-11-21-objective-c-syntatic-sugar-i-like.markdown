@@ -12,19 +12,19 @@ But i hate C++ even more, because i use it more often )) Simple as that.
 Fortunately, there are some features i really DO like in Objective-C. Let me show you 3 of them:
 
 ## Method names are awesome
-Get used to this style and you want C++ to be more 'Objective'. For example, this is the good Objective-C method name:
+Get used to this style and you'll want C++ to be more 'Objective'. For example, this is the good Objective-C method name:
 
 ```objective-c
 -(void)downloadInfoAboutUser:(NSString*)code
-                  withTarget:(id)aTarget
-                 andSelector:(SEL)aCallbackSelector;
+                  withTarget:(id)target
+                 andSelector:(SEL)callbackSelector;
 ```
 
 or this:
 
 ```objective-c
--(void)setImageToCell:(UIImage*)image
-             withCell:(UITableViewCell*)cell;
+-(void)setImage:(UIImage*)image
+         toCell:(UITableViewCell*)cell;
 ```
 
 NOT this:
