@@ -4,7 +4,7 @@
   <title><![CDATA[Category: c++ sucks | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/c-plus-plus-sucks/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2013-11-21T02:03:24+04:00</updated>
+  <updated>2013-11-21T02:28:50+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -25,13 +25,13 @@ But i hate C++ even more, because i use it more often )) Simple as that.</p>
 
 <h2>Method names are awesome</h2>
 
-<p>Get used to this style and you want C++ to be more &lsquo;Objective&rsquo;. For example, this is the good Objective-C method name:</p>
+<p>Get used to this style and you&rsquo;ll want C++ to be more &lsquo;Objective&rsquo;. For example, this is the good Objective-C method name:</p>
 
 <p>```objective-c
 &ndash;(void)downloadInfoAboutUser:(NSString*)code</p>
 
-<pre><code>              withTarget:(id)aTarget
-             andSelector:(SEL)aCallbackSelector;
+<pre><code>              withTarget:(id)target
+             andSelector:(SEL)callbackSelector;
 </code></pre>
 
 <p>```</p>
@@ -39,9 +39,9 @@ But i hate C++ even more, because i use it more often )) Simple as that.</p>
 <p>or this:</p>
 
 <p>```objective-c
-&ndash;(void)setImageToCell:(UIImage*)image</p>
+&ndash;(void)setImage:(UIImage*)image</p>
 
-<pre><code>         withCell:(UITableViewCell*)cell;
+<pre><code>     toCell:(UITableViewCell*)cell;
 </code></pre>
 
 <p>```</p>
