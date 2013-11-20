@@ -4,7 +4,7 @@
   <title><![CDATA[C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2013-07-17T23:28:38+04:00</updated>
+  <updated>2013-11-21T02:03:24+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -12,5 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Three Objective-C syntatic sugar features i like]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2013/11/21/objective-c-syntatic-sugar-i-like/"/>
+    <updated>2013-11-21T01:34:00+04:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2013/11/21/objective-c-syntatic-sugar-i-like</id>
+    <content type="html"><![CDATA[<p>Let me start by saying that i really hate Objective-C and all that &lsquo;old-C-preprocessor&rsquo; stuff Apple feeds us in 21st century.
+But i hate C++ even more, because i use it more often )) Simple as that.</p>
+
+<p>Fortunately, there are some features i really DO like in Objective-C. Let me show you 3 of them:</p>
+
+<h2>Method names are awesome</h2>
+
+<p>Get used to this style and you want C++ to be more &lsquo;Objective&rsquo;. For example, this is the good Objective-C method name:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">downloadInfoAboutUser:</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">code</span>
+</span><span class='line'>                  <span class="nf">withTarget:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">aTarget</span>
+</span><span class='line'>                 <span class="nf">andSelector:</span><span class="p">(</span><span class="kt">SEL</span><span class="p">)</span><span class="nv">aCallbackSelector</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setImageToCell:</span><span class="p">(</span><span class="n">UIImage</span><span class="o">*</span><span class="p">)</span><span class="nv">image</span>
+</span><span class='line'>             <span class="nf">withCell:</span><span class="p">(</span><span class="n">UITableViewCell</span><span class="o">*</span><span class="p">)</span><span class="nv">cell</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>NOT this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setImageToCell:</span><span class="p">(</span><span class="n">UIImage</span><span class="o">*</span><span class="p">)</span><span class="nv">anImage</span>
+</span><span class='line'>                 <span class="nf">cell:</span><span class="p">(</span><span class="n">UITableViewCell</span><span class="o">*</span><span class="p">)</span><span class="nv">aCell</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Private means PRIVATE</h2>
+
+<p>I really like that <strong>private</strong> methods are <strong>REALLY</strong> private and are not <strong>visible</strong> in .h file.
+Example of .h file for class MainTabBarController goes here:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">@interface</span> <span class="nc">MainTabBarController</span> : <span class="nc">UITabBarController</span><span class="o">&lt;</span><span class="n">UITabBarControllerDelegate</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It seems like this class has no public methods client can use? Yeah, that is what i want C++ to be.
+If you need some properties or private methods &ndash; simply declare them in your .m file. Piece of cake.</p>
+
+<h2>No hate for categories</h2>
+
+<p>Categories are really useful syntatic sugar. See this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">@interface</span> <span class="nc">NSString</span> <span class="p">(</span> <span class="n">containsCategory</span> <span class="p">)</span>
+</span><span class='line'>     <span class="o">-</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">isContainsString:</span> <span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="n">substring</span><span class="p">;</span>
+</span><span class='line'><span class="k">@end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@implementation</span> <span class="nc">NSString</span> <span class="p">(</span> <span class="n">containsCategory</span> <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nl">isContainsString:</span> <span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="n">substring</span> <span class="p">{</span>
+</span><span class='line'>     <span class="n">NSRange</span> <span class="n">range</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="n">rangeOfString</span> <span class="o">:</span> <span class="n">substring</span><span class="p">];</span>
+</span><span class='line'>     <span class="kt">BOOL</span> <span class="n">found</span> <span class="o">=</span> <span class="p">(</span> <span class="n">range</span><span class="p">.</span><span class="n">location</span> <span class="o">!=</span> <span class="n">NSNotFound</span> <span class="p">);</span>
+</span><span class='line'>     <span class="k">return</span> <span class="n">found</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After declaring that &ndash; you don&rsquo;t need any inheritance or whatever&hellip; Simply use your NSString-s with new method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">NSString</span><span class="o">*</span> <span class="n">imageName</span> <span class="o">=</span> <span class="s">@&quot;blah-blah-blah&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="kt">BOOL</span> <span class="n">isPng</span> <span class="o">=</span> <span class="p">[</span><span class="n">imageName</span> <span class="nl">isContainsString:</span><span class="s">@&quot;.png&quot;</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thanks for watching. To be continued&hellip;</p>
+]]></content>
+  </entry>
   
 </feed>

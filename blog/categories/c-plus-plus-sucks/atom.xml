@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: c++ sucks | C++/Python Jehad Fan Club]]></title>
+  <link href="http://AnthonyAkentiev.github.io/blog/categories/c-plus-plus-sucks/atom.xml" rel="self"/>
+  <link href="http://AnthonyAkentiev.github.io/"/>
+  <updated>2013-11-21T02:03:24+04:00</updated>
+  <id>http://AnthonyAkentiev.github.io/</id>
+  <author>
+    <name><![CDATA[Anton Akentiev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Three Objective-C syntatic sugar features i like]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2013/11/21/objective-c-syntatic-sugar-i-like/"/>
+    <updated>2013-11-21T01:34:00+04:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2013/11/21/objective-c-syntatic-sugar-i-like</id>
+    <content type="html"><![CDATA[<p>Let me start by saying that i really hate Objective-C and all that &lsquo;old-C-preprocessor&rsquo; stuff Apple feeds us in 21st century.
+But i hate C++ even more, because i use it more often )) Simple as that.</p>
+
+<p>Fortunately, there are some features i really DO like in Objective-C. Let me show you 3 of them:</p>
+
+<h2>Method names are awesome</h2>
+
+<p>Get used to this style and you want C++ to be more &lsquo;Objective&rsquo;. For example, this is the good Objective-C method name:</p>
+
+<p>```objective-c
+&ndash;(void)downloadInfoAboutUser:(NSString*)code</p>
+
+<pre><code>              withTarget:(id)aTarget
+             andSelector:(SEL)aCallbackSelector;
+</code></pre>
+
+<p>```</p>
+
+<p>or this:</p>
+
+<p>```objective-c
+&ndash;(void)setImageToCell:(UIImage*)image</p>
+
+<pre><code>         withCell:(UITableViewCell*)cell;
+</code></pre>
+
+<p>```</p>
+
+<p>NOT this:</p>
+
+<p>```objective-c
+&ndash;(void)setImageToCell:(UIImage*)anImage</p>
+
+<pre><code>             cell:(UITableViewCell*)aCell;
+</code></pre>
+
+<p>```</p>
+
+<h2>Private means PRIVATE</h2>
+
+<p>I really like that <strong>private</strong> methods are <strong>REALLY</strong> private and are not <strong>visible</strong> in .h file.
+Example of .h file for class MainTabBarController goes here:</p>
+
+<p>```objective-c
+@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate></p>
+
+<p>@end
+```</p>
+
+<p>It seems like this class has no public methods client can use? Yeah, that is what i want C++ to be.
+If you need some properties or private methods &ndash; simply declare them in your .m file. Piece of cake.</p>
+
+<h2>No hate for categories</h2>
+
+<p>Categories are really useful syntatic sugar. See this:</p>
+
+<p>```objective-c
+@interface NSString ( containsCategory )</p>
+
+<pre><code> -(BOOL)isContainsString: (NSString*) substring;
+</code></pre>
+
+<p>@end</p>
+
+<p>@implementation NSString ( containsCategory )</p>
+
+<ul>
+<li>(BOOL) isContainsString: (NSString*) substring {
+   NSRange range = [self rangeOfString : substring];
+   BOOL found = ( range.location != NSNotFound );
+   return found;
+}
+@end
+```</li>
+</ul>
+
+
+<p>After declaring that &ndash; you don&rsquo;t need any inheritance or whatever&hellip; Simply use your NSString-s with new method:
+<code>objective-c
+NSString* imageName = @"blah-blah-blah";
+BOOL isPng = [imageName isContainsString:@".png"];
+</code></p>
+
+<p>Thanks for watching. To be continued&hellip;</p>
+]]></content>
+  </entry>
+  
+</feed>
