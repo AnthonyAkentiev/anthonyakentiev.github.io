@@ -44,8 +44,8 @@ Example of .h file for class MainTabBarController goes here:
 @end
 ```
 
-It seems like this class has no public methods client can use? Yeah, that is what i want C++ to be.
-If you need some properties or private methods - simply declare them in your .m file. Piece of cake.
+It seems like this class has no public methods client can use? Yeah, that is what i want C++ to be like.
+If you need some private properties or private methods - simply declare them in your .m file. Piece of cake.
 
 ## No hate for categories
 Categories are really useful syntatic sugar. See this:
