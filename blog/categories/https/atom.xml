@@ -4,7 +4,7 @@
   <title><![CDATA[Category: https | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/https/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2013-11-23T20:07:44+04:00</updated>
+  <updated>2013-11-23T20:13:47+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -73,7 +73,7 @@ If we need 100% guarantee that no information will be lost &ndash; we should use
 <ul>
 <li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
 add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
-<img src="images/rr_dns.png"></p></li>
+<img class="<a" src="href="http://support.novell.com/techcenter/articles/img/ana2000050206.gif">http://support.novell.com/techcenter/articles/img/ana2000050206.gif</a>"></p></li>
 <li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
 </ul>
 
