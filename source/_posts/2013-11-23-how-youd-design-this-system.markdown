@@ -46,15 +46,17 @@ If we need 100% guarantee that no information will be lost - we should use SQL D
 ###FRONTEND is a stateless RESTful HTTPS server. 
 * Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to 
 add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS: 
-{% img images/rr_dns.png %}
+{% img http://support.novell.com/techcenter/articles/img/ana2000050206.gif %}
 
 * REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:
 
 Example:
-     https://my.com/server/134/temperature_setting/65  
+     https://my.com/servers/134/temperature_detectors/65  
 
 It is not a good idea to use such URL style (with verbs): 
      https://my.com/set-server-temp?id=134&temperature=65
+
+See great article on URL naming [here](http://apigee.com/about/content/web-api-design)
 
 * HTTPS means we can authenticate client (using client-side certificate). And this is done automatically.
 The certificate can be self-signed or issued by CerticiationAuthority (Verisign, Thawte...).
