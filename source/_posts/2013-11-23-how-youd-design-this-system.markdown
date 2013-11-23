@@ -5,7 +5,7 @@ date: 2013-11-23 00:40
 comments: true
 categories: [nodejs, web, https]
 ---
-I met one of my friends today. We've been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch. I am not going to use UML, just text/pictures ))
+I met one of my friends today. We've been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.
 
 ##Reqs:
 1. System MUST provide API that can be accessed remotely.
@@ -23,18 +23,18 @@ I met one of my friends today. We've been discussing (for about 2 hours) web pro
 
 How i see that system:
 
-1. Watcher daemon: must collect data into Core, apply actions (IPMI) and get tasks from Core.  
+1. Watcher daemon: must collect data into Core, apply actions (IPMI) and pull tasks from Core.  
 2. Core: must collect data and provide Watcher with tasks. 
 3. Frontend Servers (let me call them like that): must process request from Clients and put them into Core.
 4. Clients: have to be able to send commands and receive response to Frontend Servers.
 5. High-privileged clients: admins. 
 
-## CORE
+## Core
 Contains 2 key components: DB and QUEUE.
 DB can be NoSQL if we can lessen some ACID requirements and want speed (and ease of use) over functionality. Read about 'relaxed consistency'.  
 I will write a post about that later.
 
-Some folks simply do "always say <NoSQL> if have no opinion" and don't understand key NoSQL features. Pure RDBMS (SQL, PostgreSQL …) is needed when you want transactions + complicated queries and so on. NoSQL is always simpler under the hood because it is more like traditional FileSystem (documents) and are easy to use.   
+Some folks simply do "always say NoSQL if have no opinion" and don't understand key NoSQL features. Pure RDBMS (SQL, PostgreSQL …) is needed when you want transactions + complicated queries and so on. NoSQL is always simpler under the hood because it is more like traditional FileSystem (documents) and are easy to use.   
 
 The best article i've ever seen on that topic is [here](http://blog.nahurst.com/visual-guide-to-nosql-systems):
 
@@ -44,10 +44,11 @@ QUEUE (RabbitMQ, ZeroMQ …) provides us with fast "collect tasks" and "get task
 If we need 100% guarantee that no information will be lost - we should use SQL DB (see above) and keep all task in single DB instead of queue. 
 
 ###FRONTEND is a stateless RESTful HTTPS server. 
-* Stateless means it keeps no data. And simply translates HTTP(S) GET/POST requests into CORE database/queue. Stateless is crucial for us. No one knows what server client will use next second. Add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS: 
+* Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to 
+add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS: 
 {% img images/rr_dns.png %}
 
-* REST-ful means that all requests can be sent using standard GET/POST and that URLS are not verbs, but nouns:
+* REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:
 
 Example:
      https://my.com/server/134/temperature_setting/65  
