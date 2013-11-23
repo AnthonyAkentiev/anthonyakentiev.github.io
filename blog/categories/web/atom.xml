@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2013-11-23T20:13:47+04:00</updated>
+  <updated>2013-11-23T22:22:44+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -80,7 +80,7 @@ add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
 
 <p>Example:</p>
 
-<pre><code> https://my.com/server/134/temperature_setting/65  
+<pre><code> https://my.com/servers/134/temperature_detectors/65  
 </code></pre>
 
 <p>It is not a good idea to use such URL style (with verbs):</p>
