@@ -4,7 +4,7 @@
   <title><![CDATA[Category: nodejs | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/nodejs/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2013-11-23T22:22:44+04:00</updated>
+  <updated>2013-11-23T22:25:12+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -87,6 +87,8 @@ add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
 
 <pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
 </code></pre>
+
+<p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
 
 <ul>
 <li>HTTPS means we can authenticate client (using client-side certificate). And this is done automatically.
