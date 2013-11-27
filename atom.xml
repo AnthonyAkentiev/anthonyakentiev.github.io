@@ -4,7 +4,7 @@
   <title><![CDATA[C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2013-11-23T22:25:12+04:00</updated>
+  <updated>2013-11-28T01:48:18+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -12,6 +12,226 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[BDD over TDD]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd/"/>
+    <updated>2013-11-28T01:02:00+04:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd</id>
+    <content type="html"><![CDATA[<p>Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer &ndash; &ldquo;no tests, no product&rdquo;. Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory.</p>
+
+<p>Best unit-tests in my opionion are:</p>
+
+<ol>
+<li>Written by &ldquo;non-techincal&rdquo; people, like your Client, your Tester, your Grandma.
+<em>Yes, i can tell integration test from unit-test. The statement above is still correct for UNIT-tests too!</em></li>
+<li>Written before coding is done.</li>
+<li>Small.</li>
+<li>Fast: Asynchronous. Have no side-effects.</li>
+<li>Easy-to write and to read.</li>
+</ol>
+
+
+<p>Since i have been using Node.js and decided to implement my real-world backend server using this techology, i really loved BDD style-tests.
+BDD is a little different from TDD, you can read about it somewhere else <del>over the rainbow</del> in the internet. But mostly i like it because of tests are self-explanatory.</p>
+
+<p>As an example&hellip;here is the result of running <strong>wovs</strong> testing-tool for <strong>forever</strong> library:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>♢ forever/core/tail 
+</span><span class='line'>
+</span><span class='line'>When using forever the tail() method
+</span><span class='line'>     ✓ should respond with logs for the script
+</span><span class='line'>When the tests are over stop all forever processes
+</span><span class='line'>     ✓ should stop the correct number of procs
+</span><span class='line'>
+</span><span class='line'>♢ forever/service/simple 
+</span><span class='line'>
+</span><span class='line'>When using forever the service module
+</span><span class='line'>     ✓ should have the correct exports
+</span><span class='line'>
+</span><span class='line'>♢ forever/workers/multiple 
+</span><span class='line'>
+</span><span class='line'>When using forever and spawning two processes using the same script
+</span><span class='line'>     ✓ should respond with no error
+</span><span class='line'>When using forever and spawning two processes using the same script requests against the second child
+</span><span class='line'>     ✓ should respond with i know nodejitsu
+</span><span class='line'>     ✓ stop the child process
+</span><span class='line'>When using forever and spawning two processes using the same script requests against the first child
+</span><span class='line'>     ✓ should respond with i know nodejitsu
+</span><span class='line'>     ✓ stop the child process
+</span><span class='line'>Once the stop attempt has been made
+</span><span class='line'>     ✓ the processes should be dead
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Do you see these small checks? They mean all tests have passed. How cool that we have human-readable descriptions!
+Next is few lines of <strong>mocha</strong> output for my backend server:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Code processing module
+</span><span class='line'>     removeWhitespaces
+</span><span class='line'>          ✓ should remove whitespaces 
+</span><span class='line'>     substituteCode
+</span><span class='line'>          ✓ should change code 
+</span><span class='line'>     isJsonOk
+</span><span class='line'>          ✓ should check received JSON 
+</span><span class='line'>          ✓ should check for error 
+</span><span class='line'>          ✓ should handle empty err and throw 
+</span><span class='line'>     changeTransactionId
+</span><span class='line'>          ✓ should throw error if Request-New not found 
+</span><span class='line'>          ✓ should change ID 
+</span><span class='line'>     makeResponseJson
+</span><span class='line'>          ✓ should fill all fields 
+</span><span class='line'>          ✓ should throw if no Request-New found 
+</span><span class='line'>          ✓ should throw if empty string is passed 
+</span><span class='line'>          ✓ should throw if same subst is found 
+</span><span class='line'>     makeId
+</span><span class='line'>          ✓ should make ID of required length 
+</span><span class='line'>     ...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Tests are written like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Code processing module&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>     <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;removeWhitespaces&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should remove whitespaces&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">before</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span><span class="p">;</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">mustBe</span> <span class="o">=</span> <span class="s1">&#39;helloworld&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">removeWhitespaces</span><span class="p">(</span><span class="nx">before</span><span class="p">);</span>
+</span><span class='line'>               <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">mustBe</span><span class="p">,</span><span class="nx">out</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">})</span>
+</span><span class='line'>     <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;substituteCode&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should change code&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">){</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="s1">&#39;json/code_request.json.utf8&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>               <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">changeTo</span> <span class="o">=</span> <span class="s1">&#39;AAAAAAABBBBBBBC&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">substituteCode</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">notEqual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="nx">done</span><span class="p">();</span>
+</span><span class='line'>               <span class="p">})</span>
+</span><span class='line'>          <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should do something cool...&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>               <span class="c1">// TODO: do something cool</span>
+</span><span class='line'>               <span class="c1">// TODO: assert that it is really cool!</span>
+</span><span class='line'>          <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="p">...</span>
+</span><span class='line'>     <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="p">...</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I really recommend <strong>mocha</strong> framework for Node.js developement. Simpy run it like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mocha --reporter spec
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I played with <strong>vows</strong>, <strong>expresso</strong> and <strong>mocha</strong>.
+Mocha is really the best of all (i pronounce it like &lsquo;mokka&rsquo;).</p>
+
+<p>Remember: each test saves one whale. Cheers!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How you'd design this system (pt.1)?]]></title>
