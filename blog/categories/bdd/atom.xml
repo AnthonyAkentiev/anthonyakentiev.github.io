@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bdd | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/bdd/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2013-12-03T01:37:09+04:00</updated>
+  <updated>2013-12-03T01:46:16+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -33,7 +33,7 @@
 
 
 <p>Since i have been using Node.js and decided to implement my real-world backend server using this techology, i really loved BDD style-tests.
-BDD is a little different from TDD, you can read about it somewhere else <del>over the rainbow</del> in the internet. But mostly i like it because of tests are self-explanatory.</p>
+BDD is a little different from TDD, you can read about it somewhere else <del>over the rainbow</del> in the internet. But mostly i like it because test descriptions are self-explanatory.</p>
 
 <p>As an example&hellip;here is the result of running <strong>wovs</strong> testing-tool for <strong>forever</strong> library:</p>
 
