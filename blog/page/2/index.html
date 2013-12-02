@@ -9,7 +9,7 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him &hellip;">
+  <meta name="description" content="Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer &ndash; &ldquo;no tests, no product&rdquo;. Unfortunately, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +81,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/11/28/bdd-over-tdd/">BDD Over TDD</a></h1>
     
     
       <p class="meta">
@@ -97,94 +97,227 @@
   
 
 
-<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
+<time datetime="2013-11-28T01:02:00+04:00" pubdate data-updated="true">Nov 28<span>th</span>, 2013</time>
         
-         | <a href="/blog/2013/11/23/how-youd-design-this-system/#disqus_thread">Comments</a>
+         | <a href="/blog/2013/11/28/bdd-over-tdd/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.</p>
+  <div class="entry-content"><p>Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer &ndash; &ldquo;no tests, no product&rdquo;. Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory.</p>
 
-<h2>Reqs:</h2>
+<p>Best unit-tests in my opionion are:</p>
 
 <ol>
-<li>System MUST provide API that can be accessed remotely.</li>
-<li>System MUST control millions of computers in the CLOUD.</li>
-<li>System MUST control servers using IPMI interface.</li>
-<li>System MUST be &ldquo;secure&rdquo;.</li>
-<li>System MUST monitor servers and collect statistics (kpi, load avg. etc)</li>
-<li>System MAY be scalable.</li>
-<li>System MUST have sophisticated tools for data monitoring:
-
-<ul>
-<li>It should allow us to &ldquo;monitor node15 and collect load avg if temperature exceeds 15 degrees&rdquo;.</li>
-<li>It should allow us to &ldquo;switch node92 off when load avg. exceeds 80% over 1 hour&rdquo;.</li>
-<li>It should allow us to &ldquo;alert if node41 is not responding&rdquo;.</li>
-</ul>
-</li>
+<li>Written by &ldquo;non-techincal&rdquo; people, like your Client, your Tester, your Grandma.
+<em>Yes, i can tell integration test from unit-test. The statement above is still correct for UNIT-tests too!</em></li>
+<li>Written before coding is done.</li>
+<li>Small.</li>
+<li>Fast: Asynchronous. Have no side-effects.</li>
+<li>Easy-to write and to read.</li>
 </ol>
 
 
-<h3>Simplifying: we are developing some kind of &lsquo;watching&rsquo; application that collects data and applies actions if needed.</h3>
+<p>Since i have been using Node.js and decided to implement my real-world backend server using this techology, i really loved BDD style-tests.
+BDD is a little different from TDD, you can read about it somewhere else <del>over the rainbow</del> in the internet. But mostly i like it because of tests are self-explanatory.</p>
 
-<p>How i see that system:</p>
+<p>As an example&hellip;here is the result of running <strong>wovs</strong> testing-tool for <strong>forever</strong> library:</p>
 
-<ol>
-<li>Watcher daemon: must collect data into Core, apply actions (IPMI) and pull tasks from Core.</li>
-<li>Core: must collect data and provide Watcher with tasks.</li>
-<li>Frontend Servers (let me call them like that): must process request from Clients and put them into Core.</li>
-<li>Clients: have to be able to send commands and receive response to Frontend Servers.</li>
-<li>High-privileged clients: admins.</li>
-</ol>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>♢ forever/core/tail 
+</span><span class='line'>
+</span><span class='line'>When using forever the tail() method
+</span><span class='line'>     ✓ should respond with logs for the script
+</span><span class='line'>When the tests are over stop all forever processes
+</span><span class='line'>     ✓ should stop the correct number of procs
+</span><span class='line'>
+</span><span class='line'>♢ forever/service/simple 
+</span><span class='line'>
+</span><span class='line'>When using forever the service module
+</span><span class='line'>     ✓ should have the correct exports
+</span><span class='line'>
+</span><span class='line'>♢ forever/workers/multiple 
+</span><span class='line'>
+</span><span class='line'>When using forever and spawning two processes using the same script
+</span><span class='line'>     ✓ should respond with no error
+</span><span class='line'>When using forever and spawning two processes using the same script requests against the second child
+</span><span class='line'>     ✓ should respond with i know nodejitsu
+</span><span class='line'>     ✓ stop the child process
+</span><span class='line'>When using forever and spawning two processes using the same script requests against the first child
+</span><span class='line'>     ✓ should respond with i know nodejitsu
+</span><span class='line'>     ✓ stop the child process
+</span><span class='line'>Once the stop attempt has been made
+</span><span class='line'>     ✓ the processes should be dead
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Core</h2>
+<p>Do you see these small checks? They mean all tests have passed. How cool that we have human-readable descriptions!
+Next is few lines of <strong>mocha</strong> output for my backend server:</p>
 
-<p>Contains 2 key components: DB and QUEUE.
-DB can be NoSQL if we can lessen some ACID requirements and want speed (and ease of use) over functionality. Read about &lsquo;relaxed consistency&rsquo;.<br/>
-I will write a post about that later.</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Code processing module
+</span><span class='line'>     removeWhitespaces
+</span><span class='line'>          ✓ should remove whitespaces 
+</span><span class='line'>     substituteCode
+</span><span class='line'>          ✓ should change code 
+</span><span class='line'>     isJsonOk
+</span><span class='line'>          ✓ should check received JSON 
+</span><span class='line'>          ✓ should check for error 
+</span><span class='line'>          ✓ should handle empty err and throw 
+</span><span class='line'>     changeTransactionId
+</span><span class='line'>          ✓ should throw error if Request-New not found 
+</span><span class='line'>          ✓ should change ID 
+</span><span class='line'>     makeResponseJson
+</span><span class='line'>          ✓ should fill all fields 
+</span><span class='line'>          ✓ should throw if no Request-New found 
+</span><span class='line'>          ✓ should throw if empty string is passed 
+</span><span class='line'>          ✓ should throw if same subst is found 
+</span><span class='line'>     makeId
+</span><span class='line'>          ✓ should make ID of required length 
+</span><span class='line'>     ...</span></code></pre></td></tr></table></div></figure>
 
-<p>Some folks simply do &ldquo;always say NoSQL if have no opinion&rdquo; and don&rsquo;t understand key NoSQL features. Pure RDBMS (SQL, PostgreSQL …) is needed when you want transactions + complicated queries and so on. NoSQL is always simpler under the hood because it is more like traditional FileSystem (documents) and are easy to use.</p>
 
-<p>The best article i&rsquo;ve ever seen on that topic is <a href="http://blog.nahurst.com/visual-guide-to-nosql-systems">here</a>:</p>
+<p>Tests are written like this:</p>
 
-<blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Code processing module&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>     <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;removeWhitespaces&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should remove whitespaces&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">before</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span><span class="p">;</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">mustBe</span> <span class="o">=</span> <span class="s1">&#39;helloworld&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">removeWhitespaces</span><span class="p">(</span><span class="nx">before</span><span class="p">);</span>
+</span><span class='line'>               <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">mustBe</span><span class="p">,</span><span class="nx">out</span><span class="p">);</span>
+</span><span class='line'>          <span class="p">})</span>
+</span><span class='line'>     <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;substituteCode&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should change code&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">){</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="s1">&#39;json/code_request.json.utf8&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>               <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">changeTo</span> <span class="o">=</span> <span class="s1">&#39;AAAAAAABBBBBBBC&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">substituteCode</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">notEqual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="nx">done</span><span class="p">();</span>
+</span><span class='line'>               <span class="p">})</span>
+</span><span class='line'>          <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should do something cool...&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>               <span class="c1">// TODO: do something cool</span>
+</span><span class='line'>               <span class="c1">// TODO: assert that it is really cool!</span>
+</span><span class='line'>          <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="p">...</span>
+</span><span class='line'>     <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="p">...</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash &ndash;> all information will be lost.
-If we need 100% guarantee that no information will be lost &ndash; we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
 
-<h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
+<p>I really recommend <strong>mocha</strong> framework for Node.js developement. Simpy run it like this:</p>
 
-<ul>
-<li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
-add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
-<img src="http://support.novell.com/techcenter/articles/img/ana2000050206.gif"></p></li>
-<li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
-</ul>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mocha --reporter spec
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Example:</p>
+<p>I played with <strong>vows</strong>, <strong>expresso</strong> and <strong>mocha</strong>.
+Mocha is really the best of all (i pronounce it like &lsquo;mokka&rsquo;).</p>
 
-<pre><code> https://my.com/servers/134/temperature_detectors/65  
-</code></pre>
-
-<p>It is not a good idea to use such URL style (with verbs):</p>
-
-<pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
-</code></pre>
-
-<p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
-
-<ul>
-<li>HTTPS means we can authenticate client (using client-side certificate). And this is done automatically.
-The certificate can be self-signed or issued by CerticiationAuthority (Verisign, Thawte&hellip;).</li>
-</ul>
-
-
-<p><strong>To be continued…</strong></p>
+<p>Remember: each test saves one whale. Cheers!</p>
 </div>
   
   
@@ -207,6 +340,10 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/on-ios-7-stability/">On iOS 7 Stability</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/11/28/bdd-over-tdd/">BDD Over TDD</a>
