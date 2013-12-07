@@ -18,7 +18,7 @@ Best unit-tests in my opionion are:
 5. Easy-to write and to read.
 
 Since i have been using Node.js and decided to implement my real-world backend server using this techology, i really loved BDD style-tests.
-BDD is a little different from TDD, you can read about it somewhere else ~~over the rainbow~~ in the internet. But mostly i like it because of tests are self-explanatory.
+BDD is a little different from TDD, you can read about it somewhere else ~~over the rainbow~~ in the internet. But mostly i like it because test descriptions are self-explanatory.
 
 As an example...here is the result of running **wovs** testing-tool for **forever** library:
 
