@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What if C# become open-source?"
+title: "What if C# became open-source?"
 date: 2013-12-08 01:26
 comments: true
 categories: [C#, .NET, CLR, Foresight]
