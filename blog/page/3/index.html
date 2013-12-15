@@ -9,7 +9,8 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer &ndash; &ldquo;no tests, no product&rdquo;. Unfortunately, &hellip;">
+  <meta name="description" content="I&rsquo;ve got 15 minutes before going to sleep and i&rsquo;d like to dedicate this time to discussing iOS7 (in)stability.
+I owned many Apple &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +82,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/11/28/bdd-over-tdd/">BDD Over TDD</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/12/03/on-ios-7-stability/">On iOS 7 Stability</a></h1>
     
     
       <p class="meta">
@@ -97,227 +98,39 @@
   
 
 
-<time datetime="2013-11-28T01:02:00+04:00" pubdate data-updated="true">Nov 28<span>th</span>, 2013</time>
+<time datetime="2013-12-03T01:09:00+04:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2013</time>
         
-         | <a href="/blog/2013/11/28/bdd-over-tdd/#disqus_thread">Comments</a>
+         | <a href="/blog/2013/12/03/on-ios-7-stability/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer &ndash; &ldquo;no tests, no product&rdquo;. Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory.</p>
+  <div class="entry-content"><p>I&rsquo;ve got 15 minutes before going to sleep and i&rsquo;d like to dedicate this time to discussing iOS7 (in)stability.
+I owned many Apple products but none of them were so instable like iOS7 does.</p>
 
-<p>Best unit-tests in my opionion are:</p>
+<p>I asked 5 friends/collegues of mine: 3 admitted that iOS7 is &ldquo;slow&rdquo;,&ldquo;crashes&rdquo; and &ldquo;not as stable as 6th was&rdquo;, 2 sayed it is &ldquo;ok&rdquo;.
+Really, upgrading to 6th version went smooth. As far as i remember &ndash; the only issue it had was &ndash; it ate a lot of battery. That was the first Apple&rsquo;s step towards Android).</p>
 
-<ol>
-<li>Written by &ldquo;non-techincal&rdquo; people, like your Client, your Tester, your Grandma.
-<em>Yes, i can tell integration test from unit-test. The statement above is still correct for UNIT-tests too!</em></li>
-<li>Written before coding is done.</li>
-<li>Small.</li>
-<li>Fast: Asynchronous. Have no side-effects.</li>
-<li>Easy-to write and to read.</li>
-</ol>
+<p>I like iOS7 design, i really like it.
+I use my iPod 95% of time as a music/audiobook player &ndash; and i want 100% stability in these use cases. But my iPod does well everything but that!</p>
 
+<p>Now i am listening to
+<img src="http://img1.fantasticfiction.co.uk/images/n0/n708.jpg" title="Stephen King, The Eyes Of The Dragon" alt="Stephen King, The Eyes Of The Dragon" /></p>
 
-<p>Since i have been using Node.js and decided to implement my real-world backend server using this techology, i really loved BDD style-tests.
-BDD is a little different from TDD, you can read about it somewhere else <del>over the rainbow</del> in the internet. But mostly i like it because test descriptions are self-explanatory.</p>
-
-<p>As an example&hellip;here is the result of running <strong>wovs</strong> testing-tool for <strong>forever</strong> library:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>♢ forever/core/tail 
-</span><span class='line'>
-</span><span class='line'>When using forever the tail() method
-</span><span class='line'>     ✓ should respond with logs for the script
-</span><span class='line'>When the tests are over stop all forever processes
-</span><span class='line'>     ✓ should stop the correct number of procs
-</span><span class='line'>
-</span><span class='line'>♢ forever/service/simple 
-</span><span class='line'>
-</span><span class='line'>When using forever the service module
-</span><span class='line'>     ✓ should have the correct exports
-</span><span class='line'>
-</span><span class='line'>♢ forever/workers/multiple 
-</span><span class='line'>
-</span><span class='line'>When using forever and spawning two processes using the same script
-</span><span class='line'>     ✓ should respond with no error
-</span><span class='line'>When using forever and spawning two processes using the same script requests against the second child
-</span><span class='line'>     ✓ should respond with i know nodejitsu
-</span><span class='line'>     ✓ stop the child process
-</span><span class='line'>When using forever and spawning two processes using the same script requests against the first child
-</span><span class='line'>     ✓ should respond with i know nodejitsu
-</span><span class='line'>     ✓ stop the child process
-</span><span class='line'>Once the stop attempt has been made
-</span><span class='line'>     ✓ the processes should be dead
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li>Music player crashes every day. I loose my position (not a name of song))) and it is very difficult to find it again in 10+h audiobooks.</li>
+<li>Music clicks when LockScreen is unlocked. Ahhhhh, crap.</li>
+<li>I just can&rsquo;t find position with my finger! The slider is way TOO small&hellip; Shit. Seems like i&rsquo;m getting used to big Samsung screens.</li>
+<li>Position is saved incorrectly if i pause and then start again. It is always minus 30-40 seconds late.</li>
+<li>Music player cant restore position in 50% of tries.</li>
+<li>Sometimes position freezes. I&rsquo;m jumping back to 14:55 and then again and again. Oh, maybe Jobs invented some kind of neat DJ feature? But it really annoys me.</li>
+<li>The interface is SOO slow! Samdroid is very-very fast when compared. By the way, i own iPod 5! Not that old and slow 4th gen.device&hellip;</li>
+</ul>
 
 
-<p>Do you see these small checks? They mean all tests have passed. How cool that we have human-readable descriptions!
-Next is few lines of <strong>mocha</strong> output for my backend server:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Code processing module
-</span><span class='line'>     removeWhitespaces
-</span><span class='line'>          ✓ should remove whitespaces 
-</span><span class='line'>     substituteCode
-</span><span class='line'>          ✓ should change code 
-</span><span class='line'>     isJsonOk
-</span><span class='line'>          ✓ should check received JSON 
-</span><span class='line'>          ✓ should check for error 
-</span><span class='line'>          ✓ should handle empty err and throw 
-</span><span class='line'>     changeTransactionId
-</span><span class='line'>          ✓ should throw error if Request-New not found 
-</span><span class='line'>          ✓ should change ID 
-</span><span class='line'>     makeResponseJson
-</span><span class='line'>          ✓ should fill all fields 
-</span><span class='line'>          ✓ should throw if no Request-New found 
-</span><span class='line'>          ✓ should throw if empty string is passed 
-</span><span class='line'>          ✓ should throw if same subst is found 
-</span><span class='line'>     makeId
-</span><span class='line'>          ✓ should make ID of required length 
-</span><span class='line'>     ...</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Tests are written like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Code processing module&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>     <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;removeWhitespaces&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should remove whitespaces&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>               <span class="kd">var</span> <span class="nx">before</span> <span class="o">=</span> <span class="s1">&#39;hello world&#39;</span><span class="p">;</span>
-</span><span class='line'>               <span class="kd">var</span> <span class="nx">mustBe</span> <span class="o">=</span> <span class="s1">&#39;helloworld&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>               <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">removeWhitespaces</span><span class="p">(</span><span class="nx">before</span><span class="p">);</span>
-</span><span class='line'>               <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">mustBe</span><span class="p">,</span><span class="nx">out</span><span class="p">);</span>
-</span><span class='line'>          <span class="p">})</span>
-</span><span class='line'>     <span class="p">})</span>
-</span><span class='line'>
-</span><span class='line'>     <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;substituteCode&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should change code&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">){</span>
-</span><span class='line'>               <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="s1">&#39;json/code_request.json.utf8&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>               <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>                    <span class="kd">var</span> <span class="nx">changeTo</span> <span class="o">=</span> <span class="s1">&#39;AAAAAAABBBBBBBC&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
-</span><span class='line'>                    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
-</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>                    <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">substituteCode</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">);</span>
-</span><span class='line'>                    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
-</span><span class='line'>                    <span class="nx">assert</span><span class="p">.</span><span class="nx">notEqual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>                    <span class="nx">done</span><span class="p">();</span>
-</span><span class='line'>               <span class="p">})</span>
-</span><span class='line'>          <span class="p">})</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should do something cool...&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>               <span class="c1">// TODO: do something cool</span>
-</span><span class='line'>               <span class="c1">// TODO: assert that it is really cool!</span>
-</span><span class='line'>          <span class="p">})</span>
-</span><span class='line'>
-</span><span class='line'>          <span class="p">...</span>
-</span><span class='line'>     <span class="p">})</span>
-</span><span class='line'>
-</span><span class='line'>     <span class="p">...</span>
-</span><span class='line'><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I really recommend <strong>mocha</strong> framework for Node.js developement. Simpy run it like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>mocha --reporter spec
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I played with <strong>vows</strong>, <strong>expresso</strong> and <strong>mocha</strong>.
-Mocha is really the best of all (i pronounce it like &lsquo;mokka&rsquo;).</p>
-
-<p>Remember: each test saves one whale. Cheers!</p>
+<p>Oh, Apple. Please do 64bit processing, do fingerprint recognition&hellip; But FIRST OF ALL &ndash; do fix that fucking iOS7.</p>
 </div>
   
   
@@ -342,6 +155,10 @@ Mocha is really the best of all (i pronounce it like &lsquo;mokka&rsquo;).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/15/the-launch-pad-book-review/">The Launch Pad: Inside Y Combinator - Book Review</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/08/what-if-see-sharp-become-open-source/">What if C# Became Open-source?</a>
       </li>
     
@@ -355,10 +172,6 @@ Mocha is really the best of all (i pronounce it like &lsquo;mokka&rsquo;).</p>
     
       <li class="post">
         <a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/21/objective-c-syntatic-sugar-i-like/">Three Objective-C Syntatic Sugar Features I Like</a>
       </li>
     
   </ul>
