@@ -3,7 +3,7 @@ layout: post
 title: "BDD over TDD"
 date: 2013-11-28 01:02
 comments: true
-categories: nodejs, bdd
+categories: [nodejs, bdd]
 ---
 
 Today i'm going to talk a little bit about unit-tests. First rule of any programmer - "no tests, no product". Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory. 
