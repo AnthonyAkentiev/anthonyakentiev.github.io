@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How you'd design this system (pt.1)? - C++/Python Jehad Fan Club</title>
+  <title>The Thriller - C++/Python Jehad Fan Club</title>
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him &hellip;">
+  <meta name="description" content="Book &ldquo;Hatching Twitter: A True Story of Money, Power, Friendship, and Betrayal&rdquo; is written by Nick Bilton. Here is the link. It was &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system">
+  <link rel="canonical" href="http://AnthonyAkentiev.github.io/blog/2013/12/23/the-thriller">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="C++/Python Jehad Fan Club" type="application/atom+xml">
@@ -78,7 +78,7 @@
   
   <header>
     
-      <h1 class="entry-title">How You'd Design This System (pt.1)?</h1>
+      <h1 class="entry-title">The Thriller</h1>
     
     
       <p class="meta">
@@ -94,7 +94,7 @@
   
 
 
-<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
+<time datetime="2013-12-23T23:41:00+04:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -103,85 +103,77 @@
   </header>
 
 
-<div class="entry-content"><p>I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.</p>
+<div class="entry-content"><p>Book &ldquo;Hatching Twitter: A True Story of Money, Power, Friendship, and Betrayal&rdquo; is written by Nick Bilton. Here is the <a href="http://www.amazon.com/Hatching-Twitter-Story-Friendship-Betrayal/dp/1591846013">link</a>. It was released about two month ago.</p>
 
-<h2>Reqs:</h2>
+<p><img src="http://www.nickbilton.com/wp-content/uploads/2013/07/HatchingTwitter.jpg" alt="" /></p>
 
-<ol>
-<li>System MUST provide API that can be accessed remotely.</li>
-<li>System MUST control millions of computers in the CLOUD.</li>
-<li>System MUST control servers using IPMI interface.</li>
-<li>System MUST be &ldquo;secure&rdquo;.</li>
-<li>System MUST monitor servers and collect statistics (kpi, load avg. etc)</li>
-<li>System MAY be scalable.</li>
-<li>System MUST have sophisticated tools for data monitoring:
+<p>This is very engaging and entertaining book. I would rather call it &ldquo;Soap Twitter&rdquo; or &ldquo;Behind-the-scenes of Twitter&rdquo;. It is fast-paced and easy to read. This book is not about technology, but about people.</p>
 
-<ul>
-<li>It should allow us to &ldquo;monitor node15 and collect load avg if temperature exceeds 15 degrees&rdquo;.</li>
-<li>It should allow us to &ldquo;switch node92 off when load avg. exceeds 80% over 1 hour&rdquo;.</li>
-<li>It should allow us to &ldquo;alert if node41 is not responding&rdquo;.</li>
-</ul>
-</li>
-</ol>
+<p>I was really surprised that Twitter was such a complete mess.</p>
 
+<h3>Here are the quotes</h3>
 
-<h3>Simplifying: we are developing some kind of &lsquo;watching&rsquo; application that collects data and applies actions if needed.</h3>
+<p><em>Person One:</em></p>
 
-<p>How i see that system:</p>
+<p>&ldquo;I never considered you a founder&rdquo;</p>
 
-<ol>
-<li>Watcher daemon: must collect data into Core, apply actions (IPMI) and pull tasks from Core.</li>
-<li>Core: must collect data and provide Watcher with tasks.</li>
-<li>Frontend Servers (let me call them like that): must process request from Clients and put them into Core.</li>
-<li>Clients: have to be able to send commands and receive response to Frontend Servers.</li>
-<li>High-privileged clients: admins.</li>
-</ol>
+<p>&ldquo;What the fuck are you talking about? This is how VCs fuck up companies&rdquo;</p>
 
+<p>&ldquo;The board wants you to step up to the chairman role&rdquo;</p>
 
-<h2>Core</h2>
+<p>&ldquo;As far as he knew, he was &lsquo;doing a great fucking job!&rsquo;&rdquo;</p>
 
-<p>Contains 2 key components: DB and QUEUE.
-DB can be NoSQL if we can lessen some ACID requirements and want speed (and ease of use) over functionality. Read about &lsquo;relaxed consistency&rsquo;.<br/>
-I will write a post about that later.</p>
+<p>&ldquo;I really have no fucking idea who to believe anymore&rdquo;</p>
 
-<p>Some folks simply do &ldquo;always say NoSQL if have no opinion&rdquo; and don&rsquo;t understand key NoSQL features. Pure RDBMS (SQL, PostgreSQL …) is needed when you want transactions + complicated queries and so on. NoSQL is always simpler under the hood because it is more like traditional FileSystem (documents) and are easy to use.</p>
+<p>&ldquo;What the fuck! So you&rsquo;re going behind his back to be CEO of the company! I can&rsquo;t believe it &hellip;&rdquo;</p>
 
-<p>The best article i&rsquo;ve ever seen on that topic is <a href="http://blog.nahurst.com/visual-guide-to-nosql-systems">here</a>:</p>
+<p><em>Person Two:</em></p>
 
-<blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
+<p>&ldquo;He no longer looked like a himself: he began acting like the second coming of Steve Jobs&rdquo;</p>
 
-<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash &ndash;> all information will be lost.
-If we need 100% guarantee that no information will be lost &ndash; we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
+<p>&ldquo;What is the worst thing i can do as CEO to fuck the company up?&rdquo; &ndash;&ldquo;Hire your fucking friends!&rdquo;</p>
 
-<h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
+<p>&ldquo;He had watched in disbelief as he realized he&rsquo;d been completely erased from the Twitter history&rdquo;</p>
 
-<ul>
-<li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
-add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
-<img src="http://support.novell.com/techcenter/articles/img/ana2000050206.gif"></p></li>
-<li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
-</ul>
+<p>&ldquo;You&rsquo;re giving me more than i deserve?&rdquo;</p>
 
+<p>&ldquo;If you&rsquo;ll fire him, i&rsquo;ll quit&rdquo;</p>
 
-<p>Example:</p>
+<p>&ldquo;You leave the office to early. You go off to you dressmaking classes&rdquo;</p>
 
-<pre><code> https://my.com/servers/134/temperature_detectors/65  
-</code></pre>
+<p>&ldquo;He was acting like a cowboy&rdquo;</p>
 
-<p>It is not a good idea to use such URL style (with verbs):</p>
+<p><em>Person Three:</em></p>
 
-<pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
-</code></pre>
+<p>&ldquo;He is trying to push me out of company. I can feel it&rdquo;</p>
 
-<p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
+<p>&ldquo;Just a few blocks away, he wandered alone in the rain as his former friends and cofounders toasted to the award they had just won without him&rdquo;</p>
 
-<ul>
-<li>HTTPS means we can authenticate client (using client-side certificate). And this is done automatically.
-The certificate can be self-signed or issued by CerticiationAuthority (Verisign, Thawte&hellip;).</li>
-</ul>
+<p>&ldquo;A crimson stream of blood flowed down his cheek, past the drunken grin on his face&rdquo;</p>
 
+<p><em>About Twitter:</em></p>
 
-<p><strong>To be continued…</strong></p>
+<p>&ldquo;If database goes down right now, we would lose everything&hellip;&rdquo;</p>
+
+<p>&ldquo;This is fucking war! This is out enemy. We need a war map. They&rsquo;re going to attack us&rdquo;</p>
+
+<p>&ldquo;We should go off and start our own Twitter&rdquo;</p>
+
+<p>&ldquo;I&rsquo;m not working for your fucking dot-coms&rdquo;</p>
+
+<p>&ldquo;I really appreciate our friendship and don&rsquo;t want me investing, or us working together, to affect it&hellip;&rdquo;</p>
+
+<p>&ldquo;Blogger wasn&rsquo;t a traditional startup. It didn&rsquo;t have a pool table, a fridge full of beer&hellip;&rdquo;</p>
+
+<p>&ldquo;More vodka, more Red Bull, the digital music sounding like a tempo for each drink&rdquo;</p>
+
+<p>&ldquo;Well! Well! How about you fucking be uncomfortable in reference to the entire fucking career of this guy? How about you be fucking uncomfortable?&rdquo;</p>
+
+<p>&ldquo;He had cried hundreds of times over the years, cried a million tears. He had cried alone. In his bed&rdquo;</p>
+
+<h3>Conslusion</h3>
+
+<p>The book is 5/5. I highly recommend this reading. It is rated 4,5/5 on Amazon. So you can believe me. It is well written and i really enjoyed it.</p>
 </div>
 
 
@@ -204,12 +196,12 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
   
 
 
-<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
+<time datetime="2013-12-23T23:41:00+04:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/https/'>https</a>, <a class='category' href='/blog/categories/nodejs/'>nodejs</a>, <a class='category' href='/blog/categories/web/'>web</a>
+    <a class='category' href='/blog/categories/books/'>books</a>, <a class='category' href='/blog/categories/readen/'>readen</a>, <a class='category' href='/blog/categories/venture/'>venture</a>
   
 </span>
 
@@ -218,7 +210,7 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/" data-via="AnthonyAkentiev" data-counturl="http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://AnthonyAkentiev.github.io/blog/2013/12/23/the-thriller/" data-via="AnthonyAkentiev" data-counturl="http://AnthonyAkentiev.github.io/blog/2013/12/23/the-thriller/" >Tweet</a>
   
   
   
@@ -229,10 +221,8 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/21/objective-c-syntatic-sugar-i-like/" title="Previous Post: Three Objective-C syntatic sugar features i like">&laquo; Three Objective-C syntatic sugar features i like</a>
+        <a class="basic-alignment left" href="/blog/2013/12/15/the-launch-pad-book-review/" title="Previous Post: The Launch Pad: Inside Y Combinator - book review">&laquo; The Launch Pad: Inside Y Combinator - book review</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/28/bdd-over-tdd/" title="Next Post: BDD over TDD">BDD over TDD &raquo;</a>
       
     </p>
   </footer>
@@ -305,8 +295,8 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/';
-        var disqus_url = 'http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/';
+        var disqus_identifier = 'http://AnthonyAkentiev.github.io/blog/2013/12/23/the-thriller/';
+        var disqus_url = 'http://AnthonyAkentiev.github.io/blog/2013/12/23/the-thriller/';
         var disqus_script = 'embed.js';
       
     (function () {
