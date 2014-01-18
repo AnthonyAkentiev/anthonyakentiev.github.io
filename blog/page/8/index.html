@@ -9,8 +9,7 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="Let me start by saying that i really hate Objective-C and all that &lsquo;old-C-preprocessor&rsquo; stuff Apple feeds us in 21st century.
-But i hate &hellip;">
+  <meta name="description" content="I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +81,7 @@ But i hate &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/11/21/objective-c-syntatic-sugar-i-like/">Three Objective-C Syntatic Sugar Features I Like</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a></h1>
     
     
       <p class="meta">
@@ -98,109 +97,94 @@ But i hate &hellip;">
   
 
 
-<time datetime="2013-11-21T01:34:00+04:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time>
+<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
         
-         | <a href="/blog/2013/11/21/objective-c-syntatic-sugar-i-like/#disqus_thread">Comments</a>
+         | <a href="/blog/2013/11/23/how-youd-design-this-system/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Let me start by saying that i really hate Objective-C and all that &lsquo;old-C-preprocessor&rsquo; stuff Apple feeds us in 21st century.
-But i hate C++ even more, because i use it more often )) Simple as that.</p>
+  <div class="entry-content"><p>I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.</p>
 
-<p>Fortunately, there are some features i really DO like in Objective-C. Let me show you 3 of them:</p>
+<h2>Reqs:</h2>
 
-<h2>Method names are awesome</h2>
+<ol>
+<li>System MUST provide API that can be accessed remotely.</li>
+<li>System MUST control millions of computers in the CLOUD.</li>
+<li>System MUST control servers using IPMI interface.</li>
+<li>System MUST be &ldquo;secure&rdquo;.</li>
+<li>System MUST monitor servers and collect statistics (kpi, load avg. etc)</li>
+<li>System MAY be scalable.</li>
+<li>System MUST have sophisticated tools for data monitoring:
 
-<p>Get used to this style and you&rsquo;ll want C++ to be more &lsquo;Objective&rsquo;. For example, this is the good Objective-C method name:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">downloadInfoAboutUser:</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">code</span>
-</span><span class='line'>                  <span class="nf">withTarget:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">target</span>
-</span><span class='line'>                 <span class="nf">andSelector:</span><span class="p">(</span><span class="kt">SEL</span><span class="p">)</span><span class="nv">callbackSelector</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>or this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setImage:</span><span class="p">(</span><span class="n">UIImage</span><span class="o">*</span><span class="p">)</span><span class="nv">image</span>
-</span><span class='line'>         <span class="nf">toCell:</span><span class="p">(</span><span class="n">UITableViewCell</span><span class="o">*</span><span class="p">)</span><span class="nv">cell</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li>It should allow us to &ldquo;monitor node15 and collect load avg if temperature exceeds 15 degrees&rdquo;.</li>
+<li>It should allow us to &ldquo;switch node92 off when load avg. exceeds 80% over 1 hour&rdquo;.</li>
+<li>It should allow us to &ldquo;alert if node41 is not responding&rdquo;.</li>
+</ul>
+</li>
+</ol>
 
 
-<p>NOT this:</p>
+<h3>Simplifying: we are developing some kind of &lsquo;watching&rsquo; application that collects data and applies actions if needed.</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setImageToCell:</span><span class="p">(</span><span class="n">UIImage</span><span class="o">*</span><span class="p">)</span><span class="nv">anImage</span>
-</span><span class='line'>                 <span class="nf">cell:</span><span class="p">(</span><span class="n">UITableViewCell</span><span class="o">*</span><span class="p">)</span><span class="nv">aCell</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>How i see that system:</p>
 
-
-<h2>Private means PRIVATE</h2>
-
-<p>I really like that <strong>private</strong> methods are <strong>REALLY</strong> private and are not <strong>visible</strong> in .h file.
-Example of .h file for class MainTabBarController goes here:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">@interface</span> <span class="nc">MainTabBarController</span> : <span class="nc">UITabBarController</span><span class="o">&lt;</span><span class="n">UITabBarControllerDelegate</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@end</span>
-</span></code></pre></td></tr></table></div></figure>
+<ol>
+<li>Watcher daemon: must collect data into Core, apply actions (IPMI) and pull tasks from Core.</li>
+<li>Core: must collect data and provide Watcher with tasks.</li>
+<li>Frontend Servers (let me call them like that): must process request from Clients and put them into Core.</li>
+<li>Clients: have to be able to send commands and receive response to Frontend Servers.</li>
+<li>High-privileged clients: admins.</li>
+</ol>
 
 
-<p>It seems like this class has no public methods client can use? Yeah, that is what i want C++ to be like.
-If you need some private properties or private methods &ndash; simply declare them in your .m file. Piece of cake.</p>
+<h2>Core</h2>
 
-<h2>No hate for categories</h2>
+<p>Contains 2 key components: DB and QUEUE.
+DB can be NoSQL if we can lessen some ACID requirements and want speed (and ease of use) over functionality. Read about &lsquo;relaxed consistency&rsquo;.<br/>
+I will write a post about that later.</p>
 
-<p>Categories are really useful syntatic sugar. See this:</p>
+<p>Some folks simply do &ldquo;always say NoSQL if have no opinion&rdquo; and don&rsquo;t understand key NoSQL features. Pure RDBMS (SQL, PostgreSQL …) is needed when you want transactions + complicated queries and so on. NoSQL is always simpler under the hood because it is more like traditional FileSystem (documents) and are easy to use.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">@interface</span> <span class="nc">NSString</span> <span class="p">(</span> <span class="n">containsCategory</span> <span class="p">)</span>
-</span><span class='line'>     <span class="o">-</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">isContainsString:</span> <span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="n">substring</span><span class="p">;</span>
-</span><span class='line'><span class="k">@end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@implementation</span> <span class="nc">NSString</span> <span class="p">(</span> <span class="n">containsCategory</span> <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nl">isContainsString:</span> <span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="n">substring</span> <span class="p">{</span>
-</span><span class='line'>     <span class="n">NSRange</span> <span class="n">range</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="n">rangeOfString</span> <span class="o">:</span> <span class="n">substring</span><span class="p">];</span>
-</span><span class='line'>     <span class="kt">BOOL</span> <span class="n">found</span> <span class="o">=</span> <span class="p">(</span> <span class="n">range</span><span class="p">.</span><span class="n">location</span> <span class="o">!=</span> <span class="n">NSNotFound</span> <span class="p">);</span>
-</span><span class='line'>     <span class="k">return</span> <span class="n">found</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">@end</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>The best article i&rsquo;ve ever seen on that topic is <a href="http://blog.nahurst.com/visual-guide-to-nosql-systems">here</a>:</p>
+
+<blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
+
+<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash &ndash;> all information will be lost.
+If we need 100% guarantee that no information will be lost &ndash; we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
+
+<h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
+
+<ul>
+<li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
+add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
+<img src="http://support.novell.com/techcenter/articles/img/ana2000050206.gif"></p></li>
+<li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
+</ul>
 
 
-<p>After declaring that &ndash; you don&rsquo;t need any inheritance or whatever&hellip; Simply use your NSString-s with new method:</p>
+<p>Example:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">NSString</span><span class="o">*</span> <span class="n">imageName</span> <span class="o">=</span> <span class="s">@&quot;blah-blah-blah&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="kt">BOOL</span> <span class="n">isPng</span> <span class="o">=</span> <span class="p">[</span><span class="n">imageName</span> <span class="nl">isContainsString:</span><span class="s">@&quot;.png&quot;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code> https://my.com/servers/134/temperature_detectors/65  
+</code></pre>
+
+<p>It is not a good idea to use such URL style (with verbs):</p>
+
+<pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
+</code></pre>
+
+<p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
+
+<ul>
+<li>HTTPS means we can authenticate client (using client-side certificate). And this is done automatically.
+The certificate can be self-signed or issued by CerticiationAuthority (Verisign, Thawte&hellip;).</li>
+</ul>
 
 
-<p>Thanks for watching. To be continued&hellip;</p>
+<p><strong>To be continued…</strong></p>
 </div>
   
   
@@ -209,6 +193,8 @@ If you need some private properties or private methods &ndash; simply declare th
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/9/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -221,6 +207,10 @@ If you need some private properties or private methods &ndash; simply declare th
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/18/on-windowsphone8/">On WindowsPhone8</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/01/02/feeding-the-monster/">Feeding the Monster</a>
