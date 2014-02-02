@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>The Launch Pad: Inside Y Combinator - book review - C++/Python Jehad Fan Club</title>
+  <title>Registry: from the dark past - C++/Python Jehad Fan Club</title>
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="Book &ldquo;The Launch Pad: Inside Y Combinator, Silicon Valley&rsquo;s Most Exclusive School for Startups&rdquo; is written by Randall Stross. Here &hellip;">
+  <meta name="description" content="That is my thoughts circa 2006-2008. Time has proven that simple and robust Unix way won.
+Today almost nobody uses Windows Registry for keeping &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://AnthonyAkentiev.github.io/blog/2013/12/15/the-launch-pad-book-review">
+  <link rel="canonical" href="http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="C++/Python Jehad Fan Club" type="application/atom+xml">
@@ -78,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">The Launch Pad: Inside Y Combinator - Book Review</h1>
+      <h1 class="entry-title">Registry: From the Dark Past</h1>
     
     
       <p class="meta">
@@ -94,7 +95,7 @@
   
 
 
-<time datetime="2013-12-15T23:47:00+04:00" pubdate data-updated="true">Dec 15<span>th</span>, 2013</time>
+<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -103,51 +104,58 @@
   </header>
 
 
-<div class="entry-content"><p>Book &ldquo;The Launch Pad: Inside Y Combinator, Silicon Valley&rsquo;s Most Exclusive School for Startups&rdquo; is written by Randall Stross. Here is the <a href="http://www.amazon.com/Launch-Pad-Combinator-Exclusive-Startups-ebook/dp/B00AFLLS3W">link</a>.</p>
+<div class="entry-content"><p>That is my thoughts circa 2006-2008. Time has proven that <strong>simple</strong> and <strong>robust</strong> Unix way won.
+Today almost nobody uses Windows Registry for keeping internal data.
+How come that good intention led to bad results?</p>
 
-<p><img src="http://ecx.images-amazon.com/images/I/51a4sOz2THL._SY344_PJlook-inside-v2,TopRight,1,0_SH20_BO1,204,203,200_.jpg" alt="" /></p>
+<p><img src="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png"></p>
 
-<h3>How to tell STARTUP from BUSINESS (even big)?</h3>
+<h1>Why Registry failed?</h1>
 
-<p>Stross has good clear view of what &ldquo;startup&rdquo; means today: yes, it is only about fast pace and scalability. Everything that is not fast and scalable is ORDINARY BUSINESS. Kawasaki-Ries-Blank have said that many times.</p>
+<p>Main reasons are:</p>
 
-<p><em>Do you think Microsoft was a STARTUP in 80th?</em></p>
+<ul>
+<li>Lack of robustness.</li>
+<li>Registry is difficult to use.</li>
+<li>Registry is not a something you can&rsquo;t live without.</li>
+</ul>
 
-<p>The other interesting thought for me is probably about &ldquo;young means free&rdquo;. Author explains it in that way: we like youngsters not because they are smart and quick, but because they have no families and mortgages ))</p>
 
-<h3>Quotes</h3>
+<h1>Long answer</h1>
 
-<p><strong>On high stress in startups</strong></p>
+<p>1) Registry has 40+ functions (3-7 parameters) to deal with. You have to memorize some of them + understand how they work. Hey, have you ever used <em>RegUnLoadKey</em>, <em>RegQueryMultipleValues</em> or <em>RegConnectRegistry</em> functions?</p>
 
-<p>&ldquo;Stress levels on our families were uncomfortably high &ndash; not something we&rsquo;d like to repeat&rdquo;</p>
+<p>2) Registry has Keys and Values (with some awkward data types built in).
+&ndash; In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
 
-<p>&ldquo;She says she was glad that she had not enjoyed a higher standard of living before coming to YC &ndash; it would have been harder to give up. We are giving up cafeteria food for ramen&hellip;&rdquo;</p>
+<p>3) Registry has some weird predefined &ldquo;folders&rdquo; like HKLM/HKCU.</p>
 
-<p>&ldquo;Is this how you want to spend the next 10 years?&rdquo;</p>
+<p>4) Registry has Links for that mounts. For example:  HKEY_CLASSES_ROOT is linked to HKEY_LOCAL_MACHINE\Software\Classes.</p>
 
-<p><strong>On women in startups</strong></p>
+<p>5) Registry uses some obscure mechanisms: Redirection + Reflection + Virtualization ))) Oh crap!
+How it works:</p>
 
-<p>&ldquo;Only 1.7 percent of venture capital-backed startups were founded by women&rdquo;</p>
+<ul>
+<li>Redirection: write from 32-bit app, and data will be redirected to WOW6432Node. This helped to separate 32/64 bit apps automatically.</li>
+<li>Reflection: write to 64-bit key and data will be propagated to WOW6432Node automatically. This helps to register OLE/COM classes only once, for example. Then Microsoft turned that off.</li>
+<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) &ndash;> it will be redirected to good one.</li>
+</ul>
 
-<p>&ldquo;Y combinator founded only 14 female founders to date&hellip;&rdquo; (2010)</p>
 
-<p>&ldquo;There had been only 1 instance in which there had been an all-female team, a pair of cofounders&rdquo;</p>
+<p>6) We have no special software to work with Registry. Try to change permissions on multiple keys for example&hellip;You can&rsquo;t get statistics, perform optimizations (defragmentation?), move, unmount, repair, clean, bulk: rename, etc.</p>
 
-<p>&ldquo;So she asked women in Berkeley&rsquo;s computer science department what toys they had played with as children &ndash; and whether Barbies were among them &ndash; and the answers she received were consistent: no Barbies. Legos were favorite toy&rdquo;</p>
+<p>7) Registry is a &lsquo;single point of failure&rsquo;.</p>
 
-<p><strong>Misc</strong></p>
+<blockquote><p>Critics labeled the Registry in Windows 95 a single point of failure, because re-installation of the operating system was required if the Registry became corrupted.However, Windows NT and later versions use transaction logs to protect against corruption during updates. Current versions of Windows use two levels of log files to ensure integrity even in the case of power failure or similar catastrophic events during database updates</p></blockquote>
 
-<p>&ldquo;Some say Europeans are less energetic, but i don&rsquo;t believe it. I think the problem with Europe is not that they lack balls, but that they lack examples&hellip;&rdquo;</p>
+<p>8) Registry is monolithic. You have to move (or backup) data from Registry &ldquo;all at once&rdquo;. Even though Registry can contain many hives, there is still no good granularity.</p>
 
-<p>&ldquo;The way to get really big returns is to do things that seem crazy &ndash; like starting a new search engine in 1998 or turning down a billion-dollar acquisition offer&rdquo;</p>
+<h1>Conclusion</h1>
 
-<p>&ldquo;There&rsquo;s so much luck involved with startups [that] you increase your odds of success by swinging the bat multiple times&hellip;&rdquo;</p>
+<p>Registry rot started with &lsquo;Registry-free COM&rsquo; configurations and manifest files. Even Microsoft was about to stop its registry usage.
+And then dozens of Cross-Platform applications that never used Registry to store settings (colors, preferences, etc) emerged. They all use filesystem because libraries are trying to make behaviour as equal as possible on different platforms.</p>
 
-<p>&ldquo;The cadence of startup life is speeding up considerably&hellip;&rdquo;</p>
-
-<h3>Conslusion</h3>
-
-<p>I&rsquo;d give it 3+ out of 5 starts. I wanted to like this book, but there is not much new to me in it. Still, 3+ stars means that book is worth reading.</p>
+<p>The good thing is that you are not forced to use Registry. So don&rsquo;t do that.</p>
 </div>
 
 
@@ -170,12 +178,12 @@
   
 
 
-<time datetime="2013-12-15T23:47:00+04:00" pubdate data-updated="true">Dec 15<span>th</span>, 2013</time>
+<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/books/'>books</a>, <a class='category' href='/blog/categories/readen/'>readen</a>, <a class='category' href='/blog/categories/venture/'>venture</a>
+    <a class='category' href='/blog/categories/c-plus-plus/'>c++</a>, <a class='category' href='/blog/categories/ms/'>ms</a>, <a class='category' href='/blog/categories/windows/'>windows</a>
   
 </span>
 
@@ -184,7 +192,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://AnthonyAkentiev.github.io/blog/2013/12/15/the-launch-pad-book-review/" data-via="AnthonyAkentiev" data-counturl="http://AnthonyAkentiev.github.io/blog/2013/12/15/the-launch-pad-book-review/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past/" data-via="AnthonyAkentiev" data-counturl="http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past/" >Tweet</a>
   
   
   
@@ -195,10 +203,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/12/08/what-if-see-sharp-become-open-source/" title="Previous Post: What if C# became open-source?">&laquo; What if C# became open-source?</a>
+        <a class="basic-alignment left" href="/blog/2014/01/18/on-windowsphone8/" title="Previous Post: On WindowsPhone8">&laquo; On WindowsPhone8</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/12/23/the-thriller/" title="Next Post: The Thriller">The Thriller &raquo;</a>
       
     </p>
   </footer>
@@ -283,8 +289,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://AnthonyAkentiev.github.io/blog/2013/12/15/the-launch-pad-book-review/';
-        var disqus_url = 'http://AnthonyAkentiev.github.io/blog/2013/12/15/the-launch-pad-book-review/';
+        var disqus_identifier = 'http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past/';
+        var disqus_url = 'http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past/';
         var disqus_script = 'embed.js';
       
     (function () {
