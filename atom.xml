@@ -4,7 +4,7 @@
   <title><![CDATA[C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2014-04-17T02:00:40+04:00</updated>
+  <updated>2014-04-28T00:44:34+04:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ScrumTrek Architecture Course]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2014/04/27/scrumtrek-architecture-course/"/>
+    <updated>2014-04-27T23:35:00+04:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2014/04/27/scrumtrek-architecture-course</id>
+    <content type="html"><![CDATA[<p>I have finished awesome 5-day <a href="http://scrumtrek.ru/trainings/view/27/">course</a>! And now i am &lsquo;SCRUM Professional: Architect&rsquo; ))</p>
+
+<p>The course was very interesting. We worked hard each 5 * 8 * 60 * 60 second.
+I think that It&rsquo;s equal to approx. 2-3 years of self studying.</p>
+
+<p><img src="http://anthonyakentiev.github.io/images/scrum1.jpg"></p>
+
+<p>Course started right from the Business Models. At the end we&rsquo;ve learned how to make proper desicions that can all be mapped diretly to business needs. I highly recommend this course to TECHNICAL people. Less patterns, less code. More thoughts, more business, more new technologies. No ads or marketing bullshit.</p>
+
+<h1>RESOURCES to get</h1>
+
+<p>All recorded mp3 are available here (in Russian):</p>
+
+<p>All SPY photoshots available here:</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/1.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/2.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/3.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/4.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/5.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/6.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/7.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/8.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/9.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/10.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/11.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/12.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/13.jpg"></p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/1.jpg"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What technologies and services i'm currently using]]></title>
