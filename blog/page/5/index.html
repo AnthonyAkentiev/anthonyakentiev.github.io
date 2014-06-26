@@ -9,8 +9,7 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="That is my thoughts circa 2006-2008. Time has proven that simple and robust Unix way won.
-Today almost nobody uses Windows Registry for keeping &hellip;">
+  <meta name="description" content="I am not really into this book, but it has one though that i liked: &ldquo;First step in any business is getting profitability&rdquo;. Of course, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +81,7 @@ Today almost nobody uses Windows Registry for keeping &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/02/02/registry-from-the-dark-past/">Registry: From the Dark Past</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/24/to-zigzag-or-not-to-zigzag/">To ZigZag or Not to ZigZag</a></h1>
     
     
       <p class="meta">
@@ -98,67 +97,55 @@ Today almost nobody uses Windows Registry for keeping &hellip;">
   
 
 
-<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
+<time datetime="2014-02-24T22:56:00+04:00" pubdate data-updated="true">Feb 24<span>th</span>, 2014</time>
         
-         | <a href="/blog/2014/02/02/registry-from-the-dark-past/#disqus_thread">Comments</a>
+         | <a href="/blog/2014/02/24/to-zigzag-or-not-to-zigzag/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>That is my thoughts circa 2006-2008. Time has proven that <strong>simple</strong> and <strong>robust</strong> Unix way won.
-Today almost nobody uses Windows Registry for keeping internal data.
-How come that good intention led to bad results?</p>
+  <div class="entry-content"><p>I am not really into this book, but it has one though that i liked: &ldquo;First step in any business is getting profitability&rdquo;. Of course, there are a lot of business that are exceptions to this statement. You can easily recall YouTube and Twitter for example.</p>
 
-<p><img src="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png"></p>
+<p><img src="http://www.zigzagprinciple.com/wp-content/themes/xmuz/images/book-home.png" alt="" /></p>
 
-<h1>Why Registry failed?</h1>
+<p>So that was Zig#1.</p>
 
-<p>Main reasons are:</p>
+<p>Zig#2 is &ldquo;Once you are profitable &ndash; add additional resources&rdquo;.</p>
 
-<ul>
-<li>Lack of robustness.</li>
-<li>Registry is difficult to use.</li>
-<li>Registry is not a something you can&rsquo;t live without.</li>
-</ul>
+<p>Zig#3 is &ldquo;Scale your business&rdquo;. Don&rsquo;t keep baking bread, spread the technology, so you will control many bakeries.</p>
 
+<p>Author starts  with little story of &ldquo;zigzagging through obstacles instead of going downhill straight to your goal&rdquo;. But  i still wonder why these <strong>straightforward</strong> steps are called <strong>ZigZags</strong> ))</p>
 
-<h1>Long answer</h1>
+<p>Here is the <a href="http://www.zigzagprinciple.com">link</a>. Every book has own domain/site today?</p>
 
-<p>1) Registry has 40+ functions (3-7 parameters) to deal with. You have to memorize some of them + understand how they work. Hey, have you ever used <em>RegUnLoadKey</em>, <em>RegQueryMultipleValues</em> or <em>RegConnectRegistry</em> functions?</p>
+<h1>Quotes:</h1>
 
-<p>2) Registry has Keys and Values (with some awkward data types built in).
-&ndash; In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
+<p>&ldquo;What skills do i have that can get me to profitability the fastest?&rdquo;</p>
 
-<p>3) Registry has some weird predefined &ldquo;folders&rdquo; like HKLM/HKCU.</p>
+<p>&ldquo;First step in building foundation is assesing your resources&rdquo;</p>
 
-<p>4) Registry has Links for that mounts. For example:  HKEY_CLASSES_ROOT is linked to HKEY_LOCAL_MACHINE\Software\Classes.</p>
+<p>&ldquo;During this first Zig, it is important to remember that you are not going to have time to be perfect at everything. Many people that are perfectionsts or have a methodological personality fail at this stage because they try to be great and
+have everything perfect and buttoned up…&rdquo;</p>
 
-<p>5) Registry uses some obscure mechanisms: Redirection + Reflection + Virtualization ))) Oh crap!
-How it works:</p>
+<p>&ldquo;We worked fast and we worked hard, which meant we didn&rsquo;t always refine our effort to the point of perfection. In fact, in many cases we settled for <strong>good enough</strong>&rdquo;</p>
 
-<ul>
-<li>Redirection: write from 32-bit app, and data will be redirected to WOW6432Node. This helped to separate 32/64 bit apps automatically.</li>
-<li>Reflection: write to 64-bit key and data will be propagated to WOW6432Node automatically. This helps to register OLE/COM classes only once, for example. Then Microsoft turned that off.</li>
-<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) &ndash;> it will be redirected to good one.</li>
-</ul>
+<p>&ldquo;A key reason many people have hard time adding a resource is they have become accustomed to micromanaging every aspect of their business&rdquo;</p>
 
+<p>&ldquo;Mental Capital (our knowledge, skills, talents, passions) + Raltionship Capital (quality of our relationships with a broad pool of people) = Financial Capital&rdquo;</p>
 
-<p>6) We have no special software to work with Registry. Try to change permissions on multiple keys for example&hellip;You can&rsquo;t get statistics, perform optimizations (defragmentation?), move, unmount, repair, clean, bulk: rename, etc.</p>
+<p>&ldquo;Most people spend 80% of their time worrying about things they can not control. In other words, they spend all of their time and energy focusing on their areas of concern rather than their area of influence&rdquo;</p>
 
-<p>7) Registry is a &lsquo;single point of failure&rsquo;.</p>
+<p>&ldquo;Entrepreneurship is having the courage to wander in the fog&rdquo;</p>
 
-<blockquote><p>Critics labeled the Registry in Windows 95 a single point of failure, because re-installation of the operating system was required if the Registry became corrupted.However, Windows NT and later versions use transaction logs to protect against corruption during updates. Current versions of Windows use two levels of log files to ensure integrity even in the case of power failure or similar catastrophic events during database updates</p></blockquote>
+<p>&ldquo;A goal needs to be: (1)written down, (2)measurable, (3)realistic&rdquo;</p>
 
-<p>8) Registry is monolithic. You have to move (or backup) data from Registry &ldquo;all at once&rdquo;. Even though Registry can contain many hives, there is still no good granularity.</p>
+<p>&ldquo;Resist change and die, adapt to change and survive, create change and thrive&rdquo;</p>
 
 <h1>Conclusion</h1>
 
-<p>Registry rot started with &lsquo;Registry-free COM&rsquo; configurations and manifest files. Even Microsoft was about to stop its registry usage.
-And then dozens of Cross-Platform applications that never used Registry to store settings (colors, preferences, etc) emerged. They all use filesystem because libraries are trying to make behaviour as equal as possible on different platforms.</p>
-
-<p>The good thing is that you are not forced to use Registry. So don&rsquo;t do that.</p>
+<p>Don&rsquo;t buy <em>&ldquo;Become Next Steve Jobs in 30 minutes&rdquo;</em>-style books.</p>
 </div>
   
   
@@ -181,6 +168,10 @@ And then dozens of Cross-Platform applications that never used Registry to store
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/06/26/add-more-value/">Add More Value</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/27/scrumtrek-architecture-course/">ScrumTrek Architecture Course</a>
@@ -216,10 +207,6 @@ And then dozens of Cross-Platform applications that never used Registry to store
     
       <li class="post">
         <a href="/blog/2013/12/15/the-launch-pad-book-review/">The Launch Pad: Inside Y Combinator - Book Review</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/08/what-if-see-sharp-become-open-source/">What if C# Became Open-source?</a>
       </li>
     
   </ul>

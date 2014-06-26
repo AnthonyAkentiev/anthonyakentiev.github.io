@@ -9,7 +9,8 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="Some say that WP8 &ldquo;rocks&rdquo;, MS will &ldquo;strike back&rdquo;, Nokia is a great company and so on&hellip; Unfortunately, while Microsoft &hellip;">
+  <meta name="description" content="That is my thoughts circa 2006-2008. Time has proven that simple and robust Unix way won.
+Today almost nobody uses Windows Registry for keeping &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +82,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/01/18/on-windowsphone8/">On WindowsPhone8</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/02/02/registry-from-the-dark-past/">Registry: From the Dark Past</a></h1>
     
     
       <p class="meta">
@@ -97,56 +98,67 @@
   
 
 
-<time datetime="2014-01-18T22:47:00+04:00" pubdate data-updated="true">Jan 18<span>th</span>, 2014</time>
+<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
         
-         | <a href="/blog/2014/01/18/on-windowsphone8/#disqus_thread">Comments</a>
+         | <a href="/blog/2014/02/02/registry-from-the-dark-past/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Some say that WP8 &ldquo;rocks&rdquo;, MS will &ldquo;strike back&rdquo;, Nokia is a great company and so on&hellip; Unfortunately, while Microsoft tries hard to find new CEO &ndash;> it seems like nobody wants to write for WP8 platform.</p>
+  <div class="entry-content"><p>That is my thoughts circa 2006-2008. Time has proven that <strong>simple</strong> and <strong>robust</strong> Unix way won.
+Today almost nobody uses Windows Registry for keeping internal data.
+How come that good intention led to bad results?</p>
 
-<h2>But(t) Why?</h2>
+<p><img src="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png"></p>
 
-<p>Not because WP8 is good (or bad).
-Not because WP8 has clear (or messy) interface.
-Not because WP8 is Microsoft.</p>
+<h1>Why Registry failed?</h1>
 
-<p>There is only one reason why i&rsquo;m not going to make some Windows Phone 8 applications in the near future: WP8 market share is too small. <strong>Imagine writing Desktop Application for Linux )) You will get nearly the same market share</strong></p>
+<p>Main reasons are:</p>
 
-<p>When starting to build app today i&rsquo;d rather consider this order:</p>
+<ul>
+<li>Lack of robustness.</li>
+<li>Registry is difficult to use.</li>
+<li>Registry is not a something you can&rsquo;t live without.</li>
+</ul>
 
-<pre><code> * Android. Yes! the paradigm is shifted, market tells us - first implement app for Android!
- * iOS
- * ... ooohhh, i need some rest
- * ... maybe we will do some WP8 research?
- * ... hey, MS gives all tools for free!
- * ... ok,ok. Some folks won their free Nokias and need WP8 app. I understand
- * WP8
-</code></pre>
 
-<p>Today i&rsquo;m going to start a list of Applications that are not available on WindowsPhone8 platform, but i NEED them. That is a real case scenario of mine, no fooling. Yes, the most basic apps are already in Windows Market, and some are not official. I will update this post, so new items will appear and some may become outdated.</p>
+<h1>Long answer</h1>
 
-<h2>Let&rsquo;s start</h2>
+<p>1) Registry has 40+ functions (3-7 parameters) to deal with. You have to memorize some of them + understand how they work. Hey, have you ever used <em>RegUnLoadKey</em>, <em>RegQueryMultipleValues</em> or <em>RegConnectRegistry</em> functions?</p>
 
-<ol>
-<li>airbnb.com</li>
-<li>snapchat.com</li>
-<li>gamecenter.nhl.com &ndash; &lsquo;National Hockey League&rsquo; streaming video app.</li>
-<li>ozon.ru &ndash; One of the biggest russian online retailers.</li>
-<li>sports.ru &ndash; One of the biggest russian online sports magazines. You can see Android + iPhone icons on their site. No WP8.</li>
-<li>ska.ru &ndash; Russian hockey club.</li>
-<li>feedly.com &ndash; Famous RSS reader (no official client, only 3rd party).</li>
-<li>music.yandex.ru &ndash; Russian Pandora/Last.Fm clone ))</li>
-<li>mobile.github.com &ndash; Oh, shhhhittt&hellip;</li>
-<li>khlmobile.com &ndash; Again, Russian &lsquo;National Hockey League&rsquo; clone.</li>
-<li>motocitizen.ru &ndash; Social network with no WP8 support! Ahahahah.</li>
-<li>lenta.ru &ndash; No official client</li>
-<li>URGENT! Dakar 2014 has only Android/iPhone clients!</li>
-</ol>
+<p>2) Registry has Keys and Values (with some awkward data types built in).
+&ndash; In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
 
+<p>3) Registry has some weird predefined &ldquo;folders&rdquo; like HKLM/HKCU.</p>
+
+<p>4) Registry has Links for that mounts. For example:  HKEY_CLASSES_ROOT is linked to HKEY_LOCAL_MACHINE\Software\Classes.</p>
+
+<p>5) Registry uses some obscure mechanisms: Redirection + Reflection + Virtualization ))) Oh crap!
+How it works:</p>
+
+<ul>
+<li>Redirection: write from 32-bit app, and data will be redirected to WOW6432Node. This helped to separate 32/64 bit apps automatically.</li>
+<li>Reflection: write to 64-bit key and data will be propagated to WOW6432Node automatically. This helps to register OLE/COM classes only once, for example. Then Microsoft turned that off.</li>
+<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) &ndash;> it will be redirected to good one.</li>
+</ul>
+
+
+<p>6) We have no special software to work with Registry. Try to change permissions on multiple keys for example&hellip;You can&rsquo;t get statistics, perform optimizations (defragmentation?), move, unmount, repair, clean, bulk: rename, etc.</p>
+
+<p>7) Registry is a &lsquo;single point of failure&rsquo;.</p>
+
+<blockquote><p>Critics labeled the Registry in Windows 95 a single point of failure, because re-installation of the operating system was required if the Registry became corrupted.However, Windows NT and later versions use transaction logs to protect against corruption during updates. Current versions of Windows use two levels of log files to ensure integrity even in the case of power failure or similar catastrophic events during database updates</p></blockquote>
+
+<p>8) Registry is monolithic. You have to move (or backup) data from Registry &ldquo;all at once&rdquo;. Even though Registry can contain many hives, there is still no good granularity.</p>
+
+<h1>Conclusion</h1>
+
+<p>Registry rot started with &lsquo;Registry-free COM&rsquo; configurations and manifest files. Even Microsoft was about to stop its registry usage.
+And then dozens of Cross-Platform applications that never used Registry to store settings (colors, preferences, etc) emerged. They all use filesystem because libraries are trying to make behaviour as equal as possible on different platforms.</p>
+
+<p>The good thing is that you are not forced to use Registry. So don&rsquo;t do that.</p>
 </div>
   
   
@@ -169,6 +181,10 @@ Not because WP8 is Microsoft.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/06/26/add-more-value/">Add More Value</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/04/27/scrumtrek-architecture-course/">ScrumTrek Architecture Course</a>
@@ -204,10 +220,6 @@ Not because WP8 is Microsoft.</p>
     
       <li class="post">
         <a href="/blog/2013/12/15/the-launch-pad-book-review/">The Launch Pad: Inside Y Combinator - Book Review</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/08/what-if-see-sharp-become-open-source/">What if C# Became Open-source?</a>
       </li>
     
   </ul>
