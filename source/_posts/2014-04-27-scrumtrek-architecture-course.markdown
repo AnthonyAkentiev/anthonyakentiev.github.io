@@ -17,8 +17,6 @@ Course started right from the Business Models. At the end we've learned how to m
 
 # RESOURCES to get
 
-All recorded mp3 are available here (in Russian):  
-
 All SPY photoshots available here (to ROTATE - just open in a new tab):
 
 {% img https://s3-eu-west-1.amazonaws.com/anthony.akentiev/scrum_trek/1.jpg %}
