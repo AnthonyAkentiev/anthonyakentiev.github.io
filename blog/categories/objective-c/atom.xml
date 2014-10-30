@@ -4,7 +4,7 @@
   <title><![CDATA[Category: objective-c | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2014-10-30T20:26:55+03:00</updated>
+  <updated>2014-10-30T21:01:40+03:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -27,75 +27,55 @@ But i hate C++ even more, because i use it more often )) Simple as that.</p>
 
 <p>Get used to this style and you&rsquo;ll want C++ to be more &lsquo;Objective&rsquo;. For example, this is the good Objective-C method name:</p>
 
-<p>```objective-c
-&ndash;(void)downloadInfoAboutUser:(NSString*)code</p>
-
-<pre><code>              withTarget:(id)target
-             andSelector:(SEL)callbackSelector;
+<pre><code class="objective-c">-(void)downloadInfoAboutUser:(NSString*)code
+                  withTarget:(id)target
+                 andSelector:(SEL)callbackSelector;
 </code></pre>
-
-<p>```</p>
 
 <p>or this:</p>
 
-<p>```objective-c
-&ndash;(void)setImage:(UIImage*)image</p>
-
-<pre><code>     toCell:(UITableViewCell*)cell;
+<pre><code class="objective-c">-(void)setImage:(UIImage*)image
+         toCell:(UITableViewCell*)cell;
 </code></pre>
-
-<p>```</p>
 
 <p>NOT this:</p>
 
-<p>```objective-c
-&ndash;(void)setImageToCell:(UIImage*)anImage</p>
-
-<pre><code>             cell:(UITableViewCell*)aCell;
+<pre><code class="objective-c">-(void)setImageToCell:(UIImage*)anImage
+                 cell:(UITableViewCell*)aCell;
 </code></pre>
-
-<p>```</p>
 
 <h2>Private means PRIVATE</h2>
 
 <p>I really like that <strong>private</strong> methods are <strong>REALLY</strong> private and are not <strong>visible</strong> in .h file.
 Example of .h file for class MainTabBarController goes here:</p>
 
-<p>```objective-c
-@interface MainTabBarController : UITabBarController<UITabBarControllerDelegate></p>
+<pre><code class="objective-c">@interface MainTabBarController : UITabBarController&lt;UITabBarControllerDelegate&gt;
 
-<p>@end
-```</p>
+@end
+</code></pre>
 
 <p>It seems like this class has no public methods client can use? Yeah, that is what i want C++ to be like.
-If you need some private properties or private methods &ndash; simply declare them in your .m file. Piece of cake.</p>
+If you need some private properties or private methods - simply declare them in your .m file. Piece of cake.</p>
 
 <h2>No hate for categories</h2>
 
 <p>Categories are really useful syntatic sugar. See this:</p>
 
-<p>```objective-c
-@interface NSString ( containsCategory )</p>
+<pre><code class="objective-c">@interface NSString ( containsCategory )
+     -(BOOL)isContainsString: (NSString*) substring;
+@end
 
-<pre><code> -(BOOL)isContainsString: (NSString*) substring;
-</code></pre>
+@implementation NSString ( containsCategory )
 
-<p>@end</p>
-
-<p>@implementation NSString ( containsCategory )</p>
-
-<ul>
-<li>(BOOL) isContainsString: (NSString*) substring {
-   NSRange range = [self rangeOfString : substring];
-   BOOL found = ( range.location != NSNotFound );
-   return found;
+- (BOOL) isContainsString: (NSString*) substring {
+     NSRange range = [self rangeOfString : substring];
+     BOOL found = ( range.location != NSNotFound );
+     return found;
 }
 @end
-```</li>
-</ul>
+</code></pre>
 
-
-<p>After declaring that &ndash; you don&rsquo;t need any inheritance or whatever&hellip; Simply use your NSString-s with new method:
+<p>After declaring that - you don&rsquo;t need any inheritance or whatever&hellip; Simply use your NSString-s with new method:
 <code>objective-c
 NSString* imageName = @"blah-blah-blah";
 BOOL isPng = [imageName isContainsString:@".png"];

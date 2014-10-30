@@ -4,7 +4,7 @@
   <title><![CDATA[Category: windows | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2014-10-30T20:26:55+03:00</updated>
+  <updated>2014-10-30T21:01:40+03:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -22,7 +22,7 @@
 Today almost nobody uses Windows Registry for keeping internal data.
 How come that good intention led to bad results?</p>
 
-<p><img class="<a" src="href="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png">http://imagewz.winzip.com/static/images/ss-reg-opt-2.png</a>"></p>
+<p><img class="<a" src="href="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png">http://imagewz.winzip.com/static/images/ss-reg-opt-2.png</a>&#8221;></p>
 
 <h1>Why Registry failed?</h1>
 
@@ -40,7 +40,7 @@ How come that good intention led to bad results?</p>
 <p>1) Registry has 40+ functions (3-7 parameters) to deal with. You have to memorize some of them + understand how they work. Hey, have you ever used <em>RegUnLoadKey</em>, <em>RegQueryMultipleValues</em> or <em>RegConnectRegistry</em> functions?</p>
 
 <p>2) Registry has Keys and Values (with some awkward data types built in).
-&ndash; In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
+- In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
 
 <p>3) Registry has some weird predefined &ldquo;folders&rdquo; like HKLM/HKCU.</p>
 
@@ -52,7 +52,7 @@ How it works:</p>
 <ul>
 <li>Redirection: write from 32-bit app, and data will be redirected to WOW6432Node. This helped to separate 32/64 bit apps automatically.</li>
 <li>Reflection: write to 64-bit key and data will be propagated to WOW6432Node automatically. This helps to register OLE/COM classes only once, for example. Then Microsoft turned that off.</li>
-<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) &ndash;> it will be redirected to good one.</li>
+<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) -> it will be redirected to good one.</li>
 </ul>
 
 

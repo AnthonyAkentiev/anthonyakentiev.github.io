@@ -9,8 +9,7 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="That is my thoughts circa 2006-2008. Time has proven that simple and robust Unix way won.
-Today almost nobody uses Windows Registry for keeping &hellip;">
+  <meta name="description" content="I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ Today almost nobody uses Windows Registry for keeping &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://AnthonyAkentiev.github.io/blog/page/6">
+  <link rel="canonical" href="http://AnthonyAkentiev.github.io/posts/14">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="C++/Python Jehad Fan Club" type="application/atom+xml">
@@ -82,7 +81,7 @@ Today almost nobody uses Windows Registry for keeping &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/02/02/registry-from-the-dark-past/">Registry: From the Dark Past</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a></h1>
     
     
       <p class="meta">
@@ -98,67 +97,90 @@ Today almost nobody uses Windows Registry for keeping &hellip;">
   
 
 
-<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
+<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2014/02/02/registry-from-the-dark-past/#disqus_thread">Comments</a>
+         | <a href="/blog/2013/11/23/how-youd-design-this-system/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>That is my thoughts circa 2006-2008. Time has proven that <strong>simple</strong> and <strong>robust</strong> Unix way won.
-Today almost nobody uses Windows Registry for keeping internal data.
-How come that good intention led to bad results?</p>
+  <div class="entry-content"><p>I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.</p>
 
-<p><img src="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png"></p>
+<h2>Reqs:</h2>
 
-<h1>Why Registry failed?</h1>
-
-<p>Main reasons are:</p>
+<ol>
+<li>System MUST provide API that can be accessed remotely.</li>
+<li>System MUST control millions of computers in the CLOUD.</li>
+<li>System MUST control servers using IPMI interface.</li>
+<li>System MUST be &ldquo;secure&rdquo;.</li>
+<li>System MUST monitor servers and collect statistics (kpi, load avg. etc)</li>
+<li>System MAY be scalable.</li>
+<li>System MUST have sophisticated tools for data monitoring:
 
 <ul>
-<li>Lack of robustness.</li>
-<li>Registry is difficult to use.</li>
-<li>Registry is not a something you can&rsquo;t live without.</li>
+<li>It should allow us to &ldquo;monitor node15 and collect load avg if temperature exceeds 15 degrees&rdquo;.</li>
+<li>It should allow us to &ldquo;switch node92 off when load avg. exceeds 80% over 1 hour&rdquo;.</li>
+<li>It should allow us to &ldquo;alert if node41 is not responding&rdquo;.</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>Simplifying: we are developing some kind of &lsquo;watching&rsquo; application that collects data and applies actions if needed.</h3>
+
+<p>How i see that system:</p>
+
+<ol>
+<li>Watcher daemon: must collect data into Core, apply actions (IPMI) and pull tasks from Core.</li>
+<li>Core: must collect data and provide Watcher with tasks.</li>
+<li>Frontend Servers (let me call them like that): must process request from Clients and put them into Core.</li>
+<li>Clients: have to be able to send commands and receive response to Frontend Servers.</li>
+<li>High-privileged clients: admins.</li>
+</ol>
+
+
+<h2>Core</h2>
+
+<p>Contains 2 key components: DB and QUEUE.
+DB can be NoSQL if we can lessen some ACID requirements and want speed (and ease of use) over functionality. Read about &lsquo;relaxed consistency&rsquo;.<br/>
+I will write a post about that later.</p>
+
+<p>Some folks simply do &ldquo;always say NoSQL if have no opinion&rdquo; and don&rsquo;t understand key NoSQL features. Pure RDBMS (SQL, PostgreSQL …) is needed when you want transactions + complicated queries and so on. NoSQL is always simpler under the hood because it is more like traditional FileSystem (documents) and are easy to use.</p>
+
+<p>The best article i&rsquo;ve ever seen on that topic is <a href="http://blog.nahurst.com/visual-guide-to-nosql-systems">here</a>:</p>
+
+<blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
+
+<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash -> all information will be lost.
+If we need 100% guarantee that no information will be lost - we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
+
+<h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
+
+<ul>
+<li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
+add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
+<img src="http://support.novell.com/techcenter/articles/img/ana2000050206.gif"></p></li>
+<li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
 </ul>
 
 
-<h1>Long answer</h1>
+<p>Example:
+     <a href="https://my.com/servers/134/temperature_detectors/65">https://my.com/servers/134/temperature_detectors/65</a></p>
 
-<p>1) Registry has 40+ functions (3-7 parameters) to deal with. You have to memorize some of them + understand how they work. Hey, have you ever used <em>RegUnLoadKey</em>, <em>RegQueryMultipleValues</em> or <em>RegConnectRegistry</em> functions?</p>
+<p>It is not a good idea to use such URL style (with verbs):
+     <a href="https://my.com/set-server-temp?id=134&amp;temperature=65">https://my.com/set-server-temp?id=134&amp;temperature=65</a></p>
 
-<p>2) Registry has Keys and Values (with some awkward data types built in).
-&ndash; In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
-
-<p>3) Registry has some weird predefined &ldquo;folders&rdquo; like HKLM/HKCU.</p>
-
-<p>4) Registry has Links for that mounts. For example:  HKEY_CLASSES_ROOT is linked to HKEY_LOCAL_MACHINE\Software\Classes.</p>
-
-<p>5) Registry uses some obscure mechanisms: Redirection + Reflection + Virtualization ))) Oh crap!
-How it works:</p>
+<p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
 
 <ul>
-<li>Redirection: write from 32-bit app, and data will be redirected to WOW6432Node. This helped to separate 32/64 bit apps automatically.</li>
-<li>Reflection: write to 64-bit key and data will be propagated to WOW6432Node automatically. This helps to register OLE/COM classes only once, for example. Then Microsoft turned that off.</li>
-<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) &ndash;> it will be redirected to good one.</li>
+<li>HTTPS means we can authenticate client (using client-side certificate). And this is done automatically.
+The certificate can be self-signed or issued by CerticiationAuthority (Verisign, Thawte&hellip;).</li>
 </ul>
 
 
-<p>6) We have no special software to work with Registry. Try to change permissions on multiple keys for example&hellip;You can&rsquo;t get statistics, perform optimizations (defragmentation?), move, unmount, repair, clean, bulk: rename, etc.</p>
-
-<p>7) Registry is a &lsquo;single point of failure&rsquo;.</p>
-
-<blockquote><p>Critics labeled the Registry in Windows 95 a single point of failure, because re-installation of the operating system was required if the Registry became corrupted.However, Windows NT and later versions use transaction logs to protect against corruption during updates. Current versions of Windows use two levels of log files to ensure integrity even in the case of power failure or similar catastrophic events during database updates</p></blockquote>
-
-<p>8) Registry is monolithic. You have to move (or backup) data from Registry &ldquo;all at once&rdquo;. Even though Registry can contain many hives, there is still no good granularity.</p>
-
-<h1>Conclusion</h1>
-
-<p>Registry rot started with &lsquo;Registry-free COM&rsquo; configurations and manifest files. Even Microsoft was about to stop its registry usage.
-And then dozens of Cross-Platform applications that never used Registry to store settings (colors, preferences, etc) emerged. They all use filesystem because libraries are trying to make behaviour as equal as possible on different platforms.</p>
-
-<p>The good thing is that you are not forced to use Registry. So don&rsquo;t do that.</p>
+<p><strong>To be continued…</strong></p>
 </div>
   
   
@@ -168,11 +190,11 @@ And then dozens of Cross-Platform applications that never used Registry to store
   
   <div class="pagination">
     
-      <a class="prev" href="/blog/page/7/">&larr; Older</a>
+      <a class="prev" href="15">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
-    <a class="next" href="/blog/page/5/">Newer &rarr;</a>
+    <a class="next" href="13">Newer &rarr;</a>
     
   </div>
 </div>
@@ -220,6 +242,26 @@ And then dozens of Cross-Platform applications that never used Registry to store
     
       <li class="post">
         <a href="/blog/2013/12/15/the-launch-pad-book-review/">The Launch Pad: Inside Y Combinator - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/08/what-if-see-sharp-become-open-source/">What if C# Became Open-source?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/on-ios-7-stability/">On iOS 7 Stability</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/28/bdd-over-tdd/">BDD Over TDD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/21/objective-c-syntatic-sugar-i-like/">Three Objective-C Syntatic Sugar Features I Like</a>
       </li>
     
   </ul>

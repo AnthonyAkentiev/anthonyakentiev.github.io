@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2014-10-30T20:26:55+03:00</updated>
+  <updated>2014-10-30T21:01:40+03:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -27,11 +27,11 @@ Let me begin:</p>
 (MongoDB + Express + AngularJS + NodeJS) for short.
 Actually, I use different DataBases for different things:</p>
 
-<p>For example &ndash; i use <strong>Redis</strong> as a quick key-value store and <strong>Memcache</strong> as a cache.</p>
+<p>For example - i use <strong>Redis</strong> as a quick key-value store and <strong>Memcache</strong> as a cache.</p>
 
 <h2>Backend</h2>
 
-<p>As i sayed before &ndash; i use NodeJS with <strong>npm</strong> as a default package manager.
+<p>As i sayed before - i use NodeJS with <strong>npm</strong> as a default package manager.
 I use <strong>Express</strong> for routing and processing, <strong>Cluster</strong> for load-balancing, <strong>Winston</strong> for logging, <strong>Mocha</strong> for tests, <strong>Nconf</strong> for configuration.</p>
 
 <h2>Frontend</h2>
@@ -39,31 +39,20 @@ I use <strong>Express</strong> for routing and processing, <strong>Cluster</stro
 <p>I use Yo for templates, Bower/NPM as package managers, Grunt as a &ldquo;task runner&rdquo;.
 To build my web-site for debugging i just type:</p>
 
-<p>```bash</p>
-
-<pre><code> grunt server
+<pre><code class="bash">     grunt server
 </code></pre>
 
-<p>```
-This starts web server on localhost to connect to.</p>
+<p>This starts web server on localhost to connect to.</p>
 
 <p>To build non-optimized version i just type:</p>
 
-<p>```bash</p>
-
-<pre><code> grunt build 
+<pre><code class="bash">     grunt build 
 </code></pre>
-
-<p>```</p>
 
 <p>To build optimized version i type:</p>
 
-<p>```bash</p>
-
-<pre><code> grunt release 
+<pre><code class="bash">     grunt release 
 </code></pre>
-
-<p>```</p>
 
 <p>This command does:
 less, cssmin, concat, ngmin, uglify, htmlmin, imagemin&hellip;</p>
@@ -77,9 +66,9 @@ Amazon: EC2, CloudFront, S3, Route53.</p>
 They e-mail me each time my server is &ldquo;too busy&rdquo; or down ))
 I will soon write an article about that. It is worth that.</p>
 
-<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/availability.png">http://anthonyakentiev.github.io/images/availability.png</a>"></p>
+<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/availability.png">http://anthonyakentiev.github.io/images/availability.png</a>&#8221;></p>
 
-<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/perf.png">http://anthonyakentiev.github.io/images/perf.png</a>"></p>
+<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/perf.png">http://anthonyakentiev.github.io/images/perf.png</a>&#8221;></p>
 
 <p>I highly recommend <a href="browserstack.com">browserstack</a> service to get screenshots of your site from different machines/browsers automatically.</p>
 ]]></content>
@@ -137,28 +126,24 @@ I will write a post about that later.</p>
 
 <blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
 
-<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash &ndash;> all information will be lost.
-If we need 100% guarantee that no information will be lost &ndash; we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
+<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash -> all information will be lost.
+If we need 100% guarantee that no information will be lost - we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
 
 <h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
 
 <ul>
 <li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
 add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
-<img class="<a" src="href="http://support.novell.com/techcenter/articles/img/ana2000050206.gif">http://support.novell.com/techcenter/articles/img/ana2000050206.gif</a>"></p></li>
+<img class="<a" src="href="http://support.novell.com/techcenter/articles/img/ana2000050206.gif">http://support.novell.com/techcenter/articles/img/ana2000050206.gif</a>&#8221;></p></li>
 <li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
 </ul>
 
 
-<p>Example:</p>
+<p>Example:
+     <a href="https://my.com/servers/134/temperature_detectors/65">https://my.com/servers/134/temperature_detectors/65</a></p>
 
-<pre><code> https://my.com/servers/134/temperature_detectors/65  
-</code></pre>
-
-<p>It is not a good idea to use such URL style (with verbs):</p>
-
-<pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
-</code></pre>
+<p>It is not a good idea to use such URL style (with verbs):
+     <a href="https://my.com/set-server-temp?id=134&amp;temperature=65">https://my.com/set-server-temp?id=134&amp;temperature=65</a></p>
 
 <p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
 

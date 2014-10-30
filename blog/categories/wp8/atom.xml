@@ -4,7 +4,7 @@
   <title><![CDATA[Category: wp8 | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/wp8/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2014-10-30T20:26:55+03:00</updated>
+  <updated>2014-10-30T21:01:40+03:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -18,7 +18,7 @@
     <link href="http://AnthonyAkentiev.github.io/blog/2014/01/18/on-windowsphone8/"/>
     <updated>2014-01-18T22:47:00+04:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2014/01/18/on-windowsphone8</id>
-    <content type="html"><![CDATA[<p>Some say that WP8 &ldquo;rocks&rdquo;, MS will &ldquo;strike back&rdquo;, Nokia is a great company and so on&hellip; Unfortunately, while Microsoft tries hard to find new CEO &ndash;> it seems like nobody wants to write for WP8 platform.</p>
+    <content type="html"><![CDATA[<p>Some say that WP8 &ldquo;rocks&rdquo;, MS will &ldquo;strike back&rdquo;, Nokia is a great company and so on&hellip; Unfortunately, while Microsoft tries hard to find new CEO -> it seems like nobody wants to write for WP8 platform.</p>
 
 <h2>But(t) Why?</h2>
 
@@ -28,16 +28,14 @@ Not because WP8 is Microsoft.</p>
 
 <p>There is only one reason why i&rsquo;m not going to make some Windows Phone 8 applications in the near future: WP8 market share is too small. <strong>Imagine writing Desktop Application for Linux )) You will get nearly the same market share</strong></p>
 
-<p>When starting to build app today i&rsquo;d rather consider this order:</p>
-
-<pre><code> * Android. Yes! the paradigm is shifted, market tells us - first implement app for Android!
- * iOS
- * ... ooohhh, i need some rest
- * ... maybe we will do some WP8 research?
- * ... hey, MS gives all tools for free!
- * ... ok,ok. Some folks won their free Nokias and need WP8 app. I understand
- * WP8
-</code></pre>
+<p>When starting to build app today i&rsquo;d rather consider this order:
+     * Android. Yes! the paradigm is shifted, market tells us - first implement app for Android!
+     * iOS
+     * &hellip; ooohhh, i need some rest
+     * &hellip; maybe we will do some WP8 research?
+     * &hellip; hey, MS gives all tools for free!
+     * &hellip; ok,ok. Some folks won their free Nokias and need WP8 app. I understand
+     * WP8</p>
 
 <p>Today i&rsquo;m going to start a list of Applications that are not available on WindowsPhone8 platform, but i NEED them. That is a real case scenario of mine, no fooling. Yes, the most basic apps are already in Windows Market, and some are not official. I will update this post, so new items will appear and some may become outdated.</p>
 
@@ -46,16 +44,16 @@ Not because WP8 is Microsoft.</p>
 <ol>
 <li>airbnb.com</li>
 <li>snapchat.com</li>
-<li>gamecenter.nhl.com &ndash; &lsquo;National Hockey League&rsquo; streaming video app.</li>
-<li>ozon.ru &ndash; One of the biggest russian online retailers.</li>
-<li>sports.ru &ndash; One of the biggest russian online sports magazines. You can see Android + iPhone icons on their site. No WP8.</li>
-<li>ska.ru &ndash; Russian hockey club.</li>
-<li>feedly.com &ndash; Famous RSS reader (no official client, only 3rd party).</li>
-<li>music.yandex.ru &ndash; Russian Pandora/Last.Fm clone ))</li>
-<li>mobile.github.com &ndash; Oh, shhhhittt&hellip;</li>
-<li>khlmobile.com &ndash; Again, Russian &lsquo;National Hockey League&rsquo; clone.</li>
-<li>motocitizen.ru &ndash; Social network with no WP8 support! Ahahahah.</li>
-<li>lenta.ru &ndash; No official client</li>
+<li>gamecenter.nhl.com - &lsquo;National Hockey League&rsquo; streaming video app.</li>
+<li>ozon.ru - One of the biggest russian online retailers.</li>
+<li>sports.ru - One of the biggest russian online sports magazines. You can see Android + iPhone icons on their site. No WP8.</li>
+<li>ska.ru - Russian hockey club.</li>
+<li>feedly.com - Famous RSS reader (no official client, only 3rd party).</li>
+<li>music.yandex.ru - Russian Pandora/Last.Fm clone ))</li>
+<li>mobile.github.com - Oh, shhhhittt&hellip;</li>
+<li>khlmobile.com - Again, Russian &lsquo;National Hockey League&rsquo; clone.</li>
+<li>motocitizen.ru - Social network with no WP8 support! Ahahahah.</li>
+<li>lenta.ru - No official client</li>
 <li>URGENT! Dakar 2014 has only Android/iPhone clients!</li>
 </ol>
 

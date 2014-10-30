@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ms | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/ms/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2014-10-30T20:26:55+03:00</updated>
+  <updated>2014-10-30T21:01:40+03:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -22,7 +22,7 @@
 Today almost nobody uses Windows Registry for keeping internal data.
 How come that good intention led to bad results?</p>
 
-<p><img class="<a" src="href="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png">http://imagewz.winzip.com/static/images/ss-reg-opt-2.png</a>"></p>
+<p><img class="<a" src="href="http://imagewz.winzip.com/static/images/ss-reg-opt-2.png">http://imagewz.winzip.com/static/images/ss-reg-opt-2.png</a>&#8221;></p>
 
 <h1>Why Registry failed?</h1>
 
@@ -40,7 +40,7 @@ How come that good intention led to bad results?</p>
 <p>1) Registry has 40+ functions (3-7 parameters) to deal with. You have to memorize some of them + understand how they work. Hey, have you ever used <em>RegUnLoadKey</em>, <em>RegQueryMultipleValues</em> or <em>RegConnectRegistry</em> functions?</p>
 
 <p>2) Registry has Keys and Values (with some awkward data types built in).
-&ndash; In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
+- In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
 
 <p>3) Registry has some weird predefined &ldquo;folders&rdquo; like HKLM/HKCU.</p>
 
@@ -52,7 +52,7 @@ How it works:</p>
 <ul>
 <li>Redirection: write from 32-bit app, and data will be redirected to WOW6432Node. This helped to separate 32/64 bit apps automatically.</li>
 <li>Reflection: write to 64-bit key and data will be propagated to WOW6432Node automatically. This helps to register OLE/COM classes only once, for example. Then Microsoft turned that off.</li>
-<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) &ndash;> it will be redirected to good one.</li>
+<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) -> it will be redirected to good one.</li>
 </ul>
 
 
@@ -78,7 +78,7 @@ And then dozens of Cross-Platform applications that never used Registry to store
     <link href="http://AnthonyAkentiev.github.io/blog/2014/01/18/on-windowsphone8/"/>
     <updated>2014-01-18T22:47:00+04:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2014/01/18/on-windowsphone8</id>
-    <content type="html"><![CDATA[<p>Some say that WP8 &ldquo;rocks&rdquo;, MS will &ldquo;strike back&rdquo;, Nokia is a great company and so on&hellip; Unfortunately, while Microsoft tries hard to find new CEO &ndash;> it seems like nobody wants to write for WP8 platform.</p>
+    <content type="html"><![CDATA[<p>Some say that WP8 &ldquo;rocks&rdquo;, MS will &ldquo;strike back&rdquo;, Nokia is a great company and so on&hellip; Unfortunately, while Microsoft tries hard to find new CEO -> it seems like nobody wants to write for WP8 platform.</p>
 
 <h2>But(t) Why?</h2>
 
@@ -88,16 +88,14 @@ Not because WP8 is Microsoft.</p>
 
 <p>There is only one reason why i&rsquo;m not going to make some Windows Phone 8 applications in the near future: WP8 market share is too small. <strong>Imagine writing Desktop Application for Linux )) You will get nearly the same market share</strong></p>
 
-<p>When starting to build app today i&rsquo;d rather consider this order:</p>
-
-<pre><code> * Android. Yes! the paradigm is shifted, market tells us - first implement app for Android!
- * iOS
- * ... ooohhh, i need some rest
- * ... maybe we will do some WP8 research?
- * ... hey, MS gives all tools for free!
- * ... ok,ok. Some folks won their free Nokias and need WP8 app. I understand
- * WP8
-</code></pre>
+<p>When starting to build app today i&rsquo;d rather consider this order:
+     * Android. Yes! the paradigm is shifted, market tells us - first implement app for Android!
+     * iOS
+     * &hellip; ooohhh, i need some rest
+     * &hellip; maybe we will do some WP8 research?
+     * &hellip; hey, MS gives all tools for free!
+     * &hellip; ok,ok. Some folks won their free Nokias and need WP8 app. I understand
+     * WP8</p>
 
 <p>Today i&rsquo;m going to start a list of Applications that are not available on WindowsPhone8 platform, but i NEED them. That is a real case scenario of mine, no fooling. Yes, the most basic apps are already in Windows Market, and some are not official. I will update this post, so new items will appear and some may become outdated.</p>
 
@@ -106,16 +104,16 @@ Not because WP8 is Microsoft.</p>
 <ol>
 <li>airbnb.com</li>
 <li>snapchat.com</li>
-<li>gamecenter.nhl.com &ndash; &lsquo;National Hockey League&rsquo; streaming video app.</li>
-<li>ozon.ru &ndash; One of the biggest russian online retailers.</li>
-<li>sports.ru &ndash; One of the biggest russian online sports magazines. You can see Android + iPhone icons on their site. No WP8.</li>
-<li>ska.ru &ndash; Russian hockey club.</li>
-<li>feedly.com &ndash; Famous RSS reader (no official client, only 3rd party).</li>
-<li>music.yandex.ru &ndash; Russian Pandora/Last.Fm clone ))</li>
-<li>mobile.github.com &ndash; Oh, shhhhittt&hellip;</li>
-<li>khlmobile.com &ndash; Again, Russian &lsquo;National Hockey League&rsquo; clone.</li>
-<li>motocitizen.ru &ndash; Social network with no WP8 support! Ahahahah.</li>
-<li>lenta.ru &ndash; No official client</li>
+<li>gamecenter.nhl.com - &lsquo;National Hockey League&rsquo; streaming video app.</li>
+<li>ozon.ru - One of the biggest russian online retailers.</li>
+<li>sports.ru - One of the biggest russian online sports magazines. You can see Android + iPhone icons on their site. No WP8.</li>
+<li>ska.ru - Russian hockey club.</li>
+<li>feedly.com - Famous RSS reader (no official client, only 3rd party).</li>
+<li>music.yandex.ru - Russian Pandora/Last.Fm clone ))</li>
+<li>mobile.github.com - Oh, shhhhittt&hellip;</li>
+<li>khlmobile.com - Again, Russian &lsquo;National Hockey League&rsquo; clone.</li>
+<li>motocitizen.ru - Social network with no WP8 support! Ahahahah.</li>
+<li>lenta.ru - No official client</li>
 <li>URGENT! Dakar 2014 has only Android/iPhone clients!</li>
 </ol>
 

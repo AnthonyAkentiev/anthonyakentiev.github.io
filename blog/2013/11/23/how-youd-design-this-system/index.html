@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How you'd design this system (pt.1)? - C++/Python Jehad Fan Club</title>
+  <title>How you&#8217;d design this system (pt.1)? - C++/Python Jehad Fan Club</title>
   <meta name="author" content="Anton Akentiev">
 
   
@@ -78,7 +78,7 @@
   
   <header>
     
-      <h1 class="entry-title">How You'd Design This System (pt.1)?</h1>
+      <h1 class="entry-title">How You&#8217;d Design This System (pt.1)?</h1>
     
     
       <p class="meta">
@@ -94,7 +94,7 @@
   
 
 
-<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
+<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true"></time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -150,8 +150,8 @@ I will write a post about that later.</p>
 
 <blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
 
-<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash &ndash;> all information will be lost.
-If we need 100% guarantee that no information will be lost &ndash; we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
+<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash -> all information will be lost.
+If we need 100% guarantee that no information will be lost - we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
 
 <h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
 
@@ -163,15 +163,11 @@ add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
 </ul>
 
 
-<p>Example:</p>
+<p>Example:
+     <a href="https://my.com/servers/134/temperature_detectors/65">https://my.com/servers/134/temperature_detectors/65</a></p>
 
-<pre><code> https://my.com/servers/134/temperature_detectors/65  
-</code></pre>
-
-<p>It is not a good idea to use such URL style (with verbs):</p>
-
-<pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
-</code></pre>
+<p>It is not a good idea to use such URL style (with verbs):
+     <a href="https://my.com/set-server-temp?id=134&amp;temperature=65">https://my.com/set-server-temp?id=134&amp;temperature=65</a></p>
 
 <p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
 
@@ -204,7 +200,7 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
   
 
 
-<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
+<time datetime="2013-11-23T00:40:00+04:00" pubdate data-updated="true"></time>
       
 
 <span class="categories">
@@ -261,7 +257,7 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/17/what-technologies-and-services-im-currently-using/">What Technologies and Services I'm Currently Using</a>
+        <a href="/blog/2014/04/17/what-technologies-and-services-im-currently-using/">What Technologies and Services I&#8217;m Currently Using</a>
       </li>
     
       <li class="post">
@@ -290,6 +286,26 @@ The certificate can be self-signed or issued by CerticiationAuthority (Verisign,
     
       <li class="post">
         <a href="/blog/2013/12/15/the-launch-pad-book-review/">The Launch Pad: Inside Y Combinator - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/08/what-if-see-sharp-become-open-source/">What if C# Became Open-source?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/on-ios-7-stability/">On iOS 7 Stability</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/28/bdd-over-tdd/">BDD Over TDD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/21/objective-c-syntatic-sugar-i-like/">Three Objective-C Syntatic Sugar Features I Like</a>
       </li>
     
   </ul>

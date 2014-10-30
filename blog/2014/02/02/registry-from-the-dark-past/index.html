@@ -95,7 +95,7 @@ Today almost nobody uses Windows Registry for keeping &hellip;">
   
 
 
-<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
+<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true"></time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -126,7 +126,7 @@ How come that good intention led to bad results?</p>
 <p>1) Registry has 40+ functions (3-7 parameters) to deal with. You have to memorize some of them + understand how they work. Hey, have you ever used <em>RegUnLoadKey</em>, <em>RegQueryMultipleValues</em> or <em>RegConnectRegistry</em> functions?</p>
 
 <p>2) Registry has Keys and Values (with some awkward data types built in).
-&ndash; In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
+- In unix: key is a path (&ldquo;folder&rdquo;) and value is the data inside.</p>
 
 <p>3) Registry has some weird predefined &ldquo;folders&rdquo; like HKLM/HKCU.</p>
 
@@ -138,7 +138,7 @@ How it works:</p>
 <ul>
 <li>Redirection: write from 32-bit app, and data will be redirected to WOW6432Node. This helped to separate 32/64 bit apps automatically.</li>
 <li>Reflection: write to 64-bit key and data will be propagated to WOW6432Node automatically. This helps to register OLE/COM classes only once, for example. Then Microsoft turned that off.</li>
-<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) &ndash;> it will be redirected to good one.</li>
+<li>Virtualization: if old app writes to &lsquo;bad&rsquo; location (that is now read-only) -> it will be redirected to good one.</li>
 </ul>
 
 
@@ -178,7 +178,7 @@ And then dozens of Cross-Platform applications that never used Registry to store
   
 
 
-<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2014</time>
+<time datetime="2014-02-02T22:10:00+04:00" pubdate data-updated="true"></time>
       
 
 <span class="categories">
@@ -235,7 +235,7 @@ And then dozens of Cross-Platform applications that never used Registry to store
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/17/what-technologies-and-services-im-currently-using/">What Technologies and Services I'm Currently Using</a>
+        <a href="/blog/2014/04/17/what-technologies-and-services-im-currently-using/">What Technologies and Services I&#8217;m Currently Using</a>
       </li>
     
       <li class="post">
@@ -264,6 +264,26 @@ And then dozens of Cross-Platform applications that never used Registry to store
     
       <li class="post">
         <a href="/blog/2013/12/15/the-launch-pad-book-review/">The Launch Pad: Inside Y Combinator - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/08/what-if-see-sharp-become-open-source/">What if C# Became Open-source?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/on-ios-7-stability/">On iOS 7 Stability</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/28/bdd-over-tdd/">BDD Over TDD</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/21/objective-c-syntatic-sugar-i-like/">Three Objective-C Syntatic Sugar Features I Like</a>
       </li>
     
   </ul>

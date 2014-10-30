@@ -4,7 +4,7 @@
   <title><![CDATA[Category: nodejs | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/nodejs/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2014-10-30T20:26:55+03:00</updated>
+  <updated>2014-10-30T21:01:40+03:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -27,11 +27,11 @@ Let me begin:</p>
 (MongoDB + Express + AngularJS + NodeJS) for short.
 Actually, I use different DataBases for different things:</p>
 
-<p>For example &ndash; i use <strong>Redis</strong> as a quick key-value store and <strong>Memcache</strong> as a cache.</p>
+<p>For example - i use <strong>Redis</strong> as a quick key-value store and <strong>Memcache</strong> as a cache.</p>
 
 <h2>Backend</h2>
 
-<p>As i sayed before &ndash; i use NodeJS with <strong>npm</strong> as a default package manager.
+<p>As i sayed before - i use NodeJS with <strong>npm</strong> as a default package manager.
 I use <strong>Express</strong> for routing and processing, <strong>Cluster</strong> for load-balancing, <strong>Winston</strong> for logging, <strong>Mocha</strong> for tests, <strong>Nconf</strong> for configuration.</p>
 
 <h2>Frontend</h2>
@@ -39,31 +39,20 @@ I use <strong>Express</strong> for routing and processing, <strong>Cluster</stro
 <p>I use Yo for templates, Bower/NPM as package managers, Grunt as a &ldquo;task runner&rdquo;.
 To build my web-site for debugging i just type:</p>
 
-<p>```bash</p>
-
-<pre><code> grunt server
+<pre><code class="bash">     grunt server
 </code></pre>
 
-<p>```
-This starts web server on localhost to connect to.</p>
+<p>This starts web server on localhost to connect to.</p>
 
 <p>To build non-optimized version i just type:</p>
 
-<p>```bash</p>
-
-<pre><code> grunt build 
+<pre><code class="bash">     grunt build 
 </code></pre>
-
-<p>```</p>
 
 <p>To build optimized version i type:</p>
 
-<p>```bash</p>
-
-<pre><code> grunt release 
+<pre><code class="bash">     grunt release 
 </code></pre>
-
-<p>```</p>
 
 <p>This command does:
 less, cssmin, concat, ngmin, uglify, htmlmin, imagemin&hellip;</p>
@@ -77,9 +66,9 @@ Amazon: EC2, CloudFront, S3, Route53.</p>
 They e-mail me each time my server is &ldquo;too busy&rdquo; or down ))
 I will soon write an article about that. It is worth that.</p>
 
-<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/availability.png">http://anthonyakentiev.github.io/images/availability.png</a>"></p>
+<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/availability.png">http://anthonyakentiev.github.io/images/availability.png</a>&#8221;></p>
 
-<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/perf.png">http://anthonyakentiev.github.io/images/perf.png</a>"></p>
+<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/perf.png">http://anthonyakentiev.github.io/images/perf.png</a>&#8221;></p>
 
 <p>I highly recommend <a href="browserstack.com">browserstack</a> service to get screenshots of your site from different machines/browsers automatically.</p>
 ]]></content>
@@ -90,7 +79,7 @@ I will soon write an article about that. It is worth that.</p>
     <link href="http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd/"/>
     <updated>2013-11-28T01:02:00+04:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd</id>
-    <content type="html"><![CDATA[<p>Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer &ndash; &ldquo;no tests, no product&rdquo;. Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory.</p>
+    <content type="html"><![CDATA[<p>Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer - &ldquo;no tests, no product&rdquo;. Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory.</p>
 
 <p>Best unit-tests in my opionion are:</p>
 
@@ -109,128 +98,144 @@ BDD is a little different from TDD, you can read about it somewhere else <del>ov
 
 <p>As an example&hellip;here is the result of running <strong>wovs</strong> testing-tool for <strong>forever</strong> library:</p>
 
-<p>```
-♢ forever/core/tail</p>
+<pre><code>♢ forever/core/tail 
 
-<p>When using forever the tail() method</p>
+When using forever the tail() method
+     ✓ should respond with logs for the script
+When the tests are over stop all forever processes
+     ✓ should stop the correct number of procs
 
-<pre><code> ✓ should respond with logs for the script
+♢ forever/service/simple 
+
+When using forever the service module
+     ✓ should have the correct exports
+
+♢ forever/workers/multiple 
+
+When using forever and spawning two processes using the same script
+     ✓ should respond with no error
+When using forever and spawning two processes using the same script requests against the second child
+     ✓ should respond with i know nodejitsu
+     ✓ stop the child process
+When using forever and spawning two processes using the same script requests against the first child
+     ✓ should respond with i know nodejitsu
+     ✓ stop the child process
+Once the stop attempt has been made
+     ✓ the processes should be dead
+...
 </code></pre>
-
-<p>When the tests are over stop all forever processes</p>
-
-<pre><code> ✓ should stop the correct number of procs
-</code></pre>
-
-<p>♢ forever/service/simple</p>
-
-<p>When using forever the service module</p>
-
-<pre><code> ✓ should have the correct exports
-</code></pre>
-
-<p>♢ forever/workers/multiple</p>
-
-<p>When using forever and spawning two processes using the same script</p>
-
-<pre><code> ✓ should respond with no error
-</code></pre>
-
-<p>When using forever and spawning two processes using the same script requests against the second child</p>
-
-<pre><code> ✓ should respond with i know nodejitsu
- ✓ stop the child process
-</code></pre>
-
-<p>When using forever and spawning two processes using the same script requests against the first child</p>
-
-<pre><code> ✓ should respond with i know nodejitsu
- ✓ stop the child process
-</code></pre>
-
-<p>Once the stop attempt has been made</p>
-
-<pre><code> ✓ the processes should be dead
-</code></pre>
-
-<p>&hellip;
-```</p>
 
 <p>Do you see these small checks? They mean all tests have passed. How cool that we have human-readable descriptions!
 Next is few lines of <strong>mocha</strong> output for my backend server:
-```
-Code processing module</p>
-
-<pre><code> removeWhitespaces
-      ✓ should remove whitespaces 
- substituteCode
-      ✓ should change code 
- isJsonOk
-      ✓ should check received JSON 
-      ✓ should check for error 
-      ✓ should handle empty err and throw 
- changeTransactionId
-      ✓ should throw error if Request-New not found 
-      ✓ should change ID 
- makeResponseJson
-      ✓ should fill all fields 
-      ✓ should throw if no Request-New found 
-      ✓ should throw if empty string is passed 
-      ✓ should throw if same subst is found 
- makeId
-      ✓ should make ID of required length 
- ...
-</code></pre>
-
-<p>```</p>
+<code>
+Code processing module
+     removeWhitespaces
+          ✓ should remove whitespaces
+     substituteCode
+          ✓ should change code
+     isJsonOk
+          ✓ should check received JSON
+          ✓ should check for error
+          ✓ should handle empty err and throw
+     changeTransactionId
+          ✓ should throw error if Request-New not found
+          ✓ should change ID
+     makeResponseJson
+          ✓ should fill all fields
+          ✓ should throw if no Request-New found
+          ✓ should throw if empty string is passed
+          ✓ should throw if same subst is found
+     makeId
+          ✓ should make ID of required length
+     ...
+</code></p>
 
 <p>Tests are written like this:
-```js</p>
-
-<p>describe(&lsquo;Code processing module&rsquo;,function(){</p>
-
-<pre><code> describe('removeWhitespaces',function(){
-      it('should remove whitespaces',function(){
-           var before = 'hello world';
-           var mustBe = 'helloworld';
-
-           var out = myLib.removeWhitespaces(before); 
-           assert.equal(mustBe,out);
-      })
- })
-
- describe('substituteCode',function(){
-      it('should change code',function(done){
-           var template = 'json/code_request.json.utf8';
-
-           fs.readFile(template, 'utf8', function (err, data) {
-                var changeTo = 'AAAAAAABBBBBBBC';
-
-                assert.equal(15,changeTo.length);
-                var index = data.indexOf(changeTo);
-                assert.equal(-1,index);
-
-                var out = myLib.substituteCode(data,changeTo); 
-                var index = out.indexOf(changeTo);
-                assert.notEqual(-1,index);
-
-                done();
-           })
-      })
-
-      it('should do something cool...',function(){
-           // TODO: do something cool
-           // TODO: assert that it is really cool!
-      })
-
-      ...
- })
-
- ...
-</code></pre>
-
-<p>})
-```</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">Code</span> <span class="nx">processing</span> <span class="nx">module</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>     <span class="nx">describe</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">removeWhitespaces</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>          <span class="nx">it</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">should</span> <span class="nx">remove</span> <span class="nx">whitespaces</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">before</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">hello</span> <span class="nx">world</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span>
+</span><span class='line'>               <span class="kd">var</span> <span class="nx">mustBe</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">helloworld</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;;</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>           <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">removeWhitespaces</span><span class="p">(</span><span class="nx">before</span><span class="p">);</span>
+</span><span class='line'>           <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">mustBe</span><span class="p">,</span><span class="nx">out</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">})</span>
+</span><span class='line'> <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;substituteCode&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should change code&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">){</span>
+</span><span class='line'>           <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="s1">&#39;json/code_request.json.utf8&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>           <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="kd">var</span> <span class="nx">changeTo</span> <span class="o">=</span> <span class="s1">&#39;AAAAAAABBBBBBBC&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</span><span class='line'>                <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">myLib</span><span class="p">.</span><span class="nx">substituteCode</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">changeTo</span><span class="p">);</span>
+</span><span class='line'>                <span class="nx">assert</span><span class="p">.</span><span class="nx">notEqual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">index</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="nx">done</span><span class="p">();</span>
+</span><span class='line'>           <span class="p">})</span>
+</span><span class='line'>      <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should do something cool...&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>           <span class="c1">// TODO: do something cool</span>
+</span><span class='line'>           <span class="c1">// TODO: assert that it is really cool!</span>
+</span><span class='line'>      <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="p">...</span>
+</span><span class='line'> <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'> <span class="p">...</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I really recommend <strong>mocha</strong> framework for Node.js developement. Simpy run it like this:
 <code>bash
@@ -295,28 +300,24 @@ I will write a post about that later.</p>
 
 <blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
 
-<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash &ndash;> all information will be lost.
-If we need 100% guarantee that no information will be lost &ndash; we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
+<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash -> all information will be lost.
+If we need 100% guarantee that no information will be lost - we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
 
 <h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
 
 <ul>
 <li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
 add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
-<img class="<a" src="href="http://support.novell.com/techcenter/articles/img/ana2000050206.gif">http://support.novell.com/techcenter/articles/img/ana2000050206.gif</a>"></p></li>
+<img class="<a" src="href="http://support.novell.com/techcenter/articles/img/ana2000050206.gif">http://support.novell.com/techcenter/articles/img/ana2000050206.gif</a>&#8221;></p></li>
 <li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
 </ul>
 
 
-<p>Example:</p>
+<p>Example:
+     <a href="https://my.com/servers/134/temperature_detectors/65">https://my.com/servers/134/temperature_detectors/65</a></p>
 
-<pre><code> https://my.com/servers/134/temperature_detectors/65  
-</code></pre>
-
-<p>It is not a good idea to use such URL style (with verbs):</p>
-
-<pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
-</code></pre>
+<p>It is not a good idea to use such URL style (with verbs):
+     <a href="https://my.com/set-server-temp?id=134&amp;temperature=65">https://my.com/set-server-temp?id=134&amp;temperature=65</a></p>
 
 <p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
 
