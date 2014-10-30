@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: web | C++/Python Jehad Fan Club]]></title>
+  <link href="http://AnthonyAkentiev.github.io/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://AnthonyAkentiev.github.io/"/>
+  <updated>2014-10-30T14:34:15+03:00</updated>
+  <id>http://AnthonyAkentiev.github.io/</id>
+  <author>
+    <name><![CDATA[Anton Akentiev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What technologies and services i'm currently using]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2014/04/17/what-technologies-and-services-im-currently-using/"/>
+    <updated>2014-04-17T01:14:00+04:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2014/04/17/what-technologies-and-services-im-currently-using</id>
+    <content type="html"><![CDATA[<p>First thing people ask when you tell them about your project is &ldquo;what technology STACK do you use?&rdquo;.
+Let me begin:</p>
+
+<h1>Stack</h1>
+
+<p>Stack that i am currently using is called <a href="http://www.mean.io">&ldquo;MEAN&rdquo;</a>
+(MongoDB + Express + AngularJS + NodeJS) for short.
+Actually, I use different DataBases for different things:</p>
+
+<p>For example &ndash; i use <strong>Redis</strong> as a quick key-value store and <strong>Memcache</strong> as a cache.</p>
+
+<h2>Backend</h2>
+
+<p>As i sayed before &ndash; i use NodeJS with <strong>npm</strong> as a default package manager.
+I use <strong>Express</strong> for routing and processing, <strong>Cluster</strong> for load-balancing, <strong>Winston</strong> for logging, <strong>Mocha</strong> for tests, <strong>Nconf</strong> for configuration.</p>
+
+<h2>Frontend</h2>
+
+<p>I use Yo for templates, Bower/NPM as package managers, Grunt as a &ldquo;task runner&rdquo;.
+To build my web-site for debugging i just type:</p>
+
+<p>```bash</p>
+
+<pre><code> grunt server
+</code></pre>
+
+<p>```
+This starts web server on localhost to connect to.</p>
+
+<p>To build non-optimized version i just type:</p>
+
+<p>```bash</p>
+
+<pre><code> grunt build 
+</code></pre>
+
+<p>```</p>
+
+<p>To build optimized version i type:</p>
+
+<p>```bash</p>
+
+<pre><code> grunt release 
+</code></pre>
+
+<p>```</p>
+
+<p>This command does:
+less, cssmin, concat, ngmin, uglify, htmlmin, imagemin&hellip;</p>
+
+<h1>Online Services</h1>
+
+<p>Services i use are:
+Amazon: EC2, CloudFront, S3, Route53.</p>
+
+<p>Very cool service i use for online monitoring and performance tuning is <a href="http://newrelic.com/">NewRelic</a>.
+They e-mail me each time my server is &ldquo;too busy&rdquo; or down ))
+I will soon write an article about that. It is worth that.</p>
+
+<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/availability.png">http://anthonyakentiev.github.io/images/availability.png</a>"></p>
+
+<p><img class="<a" src="href="http://anthonyakentiev.github.io/images/perf.png">http://anthonyakentiev.github.io/images/perf.png</a>"></p>
+
+<p>I highly recommend <a href="browserstack.com">browserstack</a> service to get screenshots of your site from different machines/browsers automatically.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How you'd design this system (pt.1)?]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/"/>
+    <updated>2013-11-23T00:40:00+04:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system</id>
+    <content type="html"><![CDATA[<p>I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.</p>
+
+<h2>Reqs:</h2>
+
+<ol>
+<li>System MUST provide API that can be accessed remotely.</li>
+<li>System MUST control millions of computers in the CLOUD.</li>
+<li>System MUST control servers using IPMI interface.</li>
+<li>System MUST be &ldquo;secure&rdquo;.</li>
+<li>System MUST monitor servers and collect statistics (kpi, load avg. etc)</li>
+<li>System MAY be scalable.</li>
+<li>System MUST have sophisticated tools for data monitoring:
+
+<ul>
+<li>It should allow us to &ldquo;monitor node15 and collect load avg if temperature exceeds 15 degrees&rdquo;.</li>
+<li>It should allow us to &ldquo;switch node92 off when load avg. exceeds 80% over 1 hour&rdquo;.</li>
+<li>It should allow us to &ldquo;alert if node41 is not responding&rdquo;.</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>Simplifying: we are developing some kind of &lsquo;watching&rsquo; application that collects data and applies actions if needed.</h3>
+
+<p>How i see that system:</p>
+
+<ol>
+<li>Watcher daemon: must collect data into Core, apply actions (IPMI) and pull tasks from Core.</li>
+<li>Core: must collect data and provide Watcher with tasks.</li>
+<li>Frontend Servers (let me call them like that): must process request from Clients and put them into Core.</li>
+<li>Clients: have to be able to send commands and receive response to Frontend Servers.</li>
+<li>High-privileged clients: admins.</li>
+</ol>
+
+
+<h2>Core</h2>
+
+<p>Contains 2 key components: DB and QUEUE.
+DB can be NoSQL if we can lessen some ACID requirements and want speed (and ease of use) over functionality. Read about &lsquo;relaxed consistency&rsquo;.<br/>
+I will write a post about that later.</p>
+
+<p>Some folks simply do &ldquo;always say NoSQL if have no opinion&rdquo; and don&rsquo;t understand key NoSQL features. Pure RDBMS (SQL, PostgreSQL …) is needed when you want transactions + complicated queries and so on. NoSQL is always simpler under the hood because it is more like traditional FileSystem (documents) and are easy to use.</p>
+
+<p>The best article i&rsquo;ve ever seen on that topic is <a href="http://blog.nahurst.com/visual-guide-to-nosql-systems">here</a>:</p>
+
+<blockquote><p>One of the primary goals of NoSQL systems is to bolster horizontal scalability. To scale horizontally, you need strong network partition tolerance which requires giving up either consistency or availability. NoSQL systems typically accomplish this by relaxing relational abilities and/or loosening transactional semantic.</p></blockquote>
+
+<p>QUEUE (RabbitMQ, ZeroMQ …) provides us with fast &ldquo;collect tasks&rdquo; and &ldquo;get tasks&rdquo; features. Usually queues are implemented in C++ and allocates a lot of memory. So if your Core will be powered down or will crash &ndash;> all information will be lost.
+If we need 100% guarantee that no information will be lost &ndash; we should use SQL DB (see above) and keep all task in single DB instead of queue.</p>
+
+<h3>FRONTEND is a stateless RESTful HTTPS server.</h3>
+
+<ul>
+<li><p>Stateless means it keeps no data. Stateless is crucial for us. No one knows which server client will use next second. It is possible to
+add balancer in front of multiple HTTP(S) servers or do Round-Robin DNS:
+<img class="<a" src="href="http://support.novell.com/techcenter/articles/img/ana2000050206.gif">http://support.novell.com/techcenter/articles/img/ana2000050206.gif</a>"></p></li>
+<li><p>REST-ful means that all requests can be sent using standard GET/POST request. All URLS are nouns, not verbs:</p></li>
+</ul>
+
+
+<p>Example:</p>
+
+<pre><code> https://my.com/servers/134/temperature_detectors/65  
+</code></pre>
+
+<p>It is not a good idea to use such URL style (with verbs):</p>
+
+<pre><code> https://my.com/set-server-temp?id=134&amp;temperature=65
+</code></pre>
+
+<p>See great article on URL naming <a href="http://apigee.com/about/content/web-api-design">here</a></p>
+
+<ul>
+<li>HTTPS means we can authenticate client (using client-side certificate). And this is done automatically.
+The certificate can be self-signed or issued by CerticiationAuthority (Verisign, Thawte&hellip;).</li>
+</ul>
+
+
+<p><strong>To be continued…</strong></p>
+]]></content>
+  </entry>
+  
+</feed>

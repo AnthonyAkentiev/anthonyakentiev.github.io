@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Foresight | C++/Python Jehad Fan Club]]></title>
+  <link href="http://AnthonyAkentiev.github.io/blog/categories/foresight/atom.xml" rel="self"/>
+  <link href="http://AnthonyAkentiev.github.io/"/>
+  <updated>2014-10-30T14:34:15+03:00</updated>
+  <id>http://AnthonyAkentiev.github.io/</id>
+  <author>
+    <name><![CDATA[Anton Akentiev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What if C# became open-source?]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2013/12/08/what-if-see-sharp-become-open-source/"/>
+    <updated>2013-12-08T01:26:00+04:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2013/12/08/what-if-see-sharp-become-open-source</id>
+    <content type="html"><![CDATA[<p>What if?</p>
+
+<p>What if Microsoft allowed us to use C#/.NET on all platforms back in 2000s (or today)?
+Look at Objective-C or Java &ndash; they all <strong>suck</strong> compared to C#. Java is really way behind See-Sharp.</p>
+
+<p>What if they OPEN-SOURCE their platform and open all the code: Virtual machine, frameworks, etc?
+Of course i am aware of Mono project )). It is a great product, but we want even more &ndash; we want support, we want freedom, we want C# on every platform (including mobile), we want that really neat language/framework to be everywhere.</p>
+
+<p><img src="http://cdn.memegenerator.net/instances/500x/34914954.jpg" title="C# meme" alt="C# meme" /></p>
+
+<p>I found that quote:</p>
+
+<blockquote><p>Android chief Andy Rubin wrote in a 2005 email, “If Sun doesn’t want to work with us, we have two options: 1) Abandon our work and adopt MSFT CLR VM and C# language – or – 2) Do Java anyway and defend our decision, perhaps making enemies along the way.</p></blockquote>
+
+<p>Imagine how different the world would be today if Google had chosen .NET instead of Java as the native development framework for the Android mobile operating system…</p>
+
+<p>Microsoft still has this opportunity. They understand that Excel/Office/Windows domination will not last for next 10 years. Customers need cloud solutions (SkyDrive, Azure), need virtualization solutions (Hyper-V)… That is a good tries by Microsoft management. Microsoft has all powers to drive developement. They can become some kind of &lsquo;backend&rsquo; technology provider all devs will use.</p>
+
+<p>Look into feature MS! Time is going on and passing you by.
+<strong>Why not do C# next Basic?</strong></p>
+]]></content>
+  </entry>
+  
+</feed>
