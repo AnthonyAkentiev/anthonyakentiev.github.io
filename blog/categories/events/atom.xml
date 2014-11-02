@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: events | C++/Python Jehad Fan Club]]></title>
+  <link href="http://AnthonyAkentiev.github.io/blog/categories/events/atom.xml" rel="self"/>
+  <link href="http://AnthonyAkentiev.github.io/"/>
+  <updated>2014-11-02T11:48:35+03:00</updated>
+  <id>http://AnthonyAkentiev.github.io/</id>
+  <author>
+    <name><![CDATA[Anton Akentiev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[YaC 2014 review]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2014/11/01/yac-2014-review/"/>
+    <updated>2014-11-01T10:10:49+03:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2014/11/01/yac-2014-review</id>
+    <content type="html"><![CDATA[<p>In this post i will review <a href="http://yandex.ru/yac2014">Yet Another Conference 2014 (by Yandex)</a> that was held in Moscow on 30th of september. This is the most famoust tech conference in Russia. They have covered broad topics, but since Yandex is the biggest internet company in Russia - topics were mostly internet-oriented.</p>
+
+<p>That was the first time i didn&rsquo;t go to the conference. Instead - i&rsquo;ve been watching it online. I hurt my leg so that was the only choice. After i&rsquo;ve watched conference - i have to admit that</p>
+
+<pre><code class="">You don't need to go to conference unless you want to have some live talks with colleagues.
+</code></pre>
+
+<h2>Why?</h2>
+
+<ol>
+<li>Watching conference online is much more convenient: you can watch 2 or 3 speeches at once, switching between them.</li>
+<li>You can quickly change the section, but in real life - it is much harder to run from one to another.</li>
+<li>You can work (that what i did) and listen to speeches in the background.</li>
+<li>You can pause.</li>
+<li>There were no free meals ))</li>
+</ol>
+
+
+<h2>Little review</h2>
+
+<p>Most keynotes were in russian. Some were not as good as i though. For example - first &ldquo;basic intro&rdquo; topic was much more interesting than some other hard-core workshops. Now what i have listened to:</p>
+
+<ol>
+<li><p><strong>Secret Statement</strong> - 8 out of 10. was very interesting. It was about Yandex SpeechKit Mobile and SpeechKit Cloud under the hood.</p></li>
+<li><p><strong>Online data analysis using Python</strong> (Использование Python для интерактивного анализа данных) workshop - 6 out of 10. Introduced tools like <em>ipython</em>, <em>matplotlib</em>, <em>pandas</em>. Online repository is <a href="https://github.com/koldunovn/YaC2014">here</a>. Workshop was a bit of boring and useful for me. I tried <em>ipython</em> and it was cool experience, but rendering Apache logs is not what i need to do.</p></li>
+<li><p><strong>Automatic Recognition of Emotions in Speech: Models and Methods</strong> - 4 out of 10. Very basic. No hardcore topics were covered. The only interesting things i remember is that &ldquo;emotion is a short change of mood&rdquo; and every emotion (like fear or excitement) could be described using 3-tuple.</p></li>
+<li><p><strong>Building Yandex IPv6-only data center</strong> (Проектировка IPv6-оnly датацентра в Яндекс) - 9 out of 10. The most interesting discussion.</p></li>
+<li><p><strong>Docker - round table</strong> (Круглый стол по Docker) - 5 out of 10. The main problem is that there were nothing interesting discussed. Some attendants were speaking very bad english, but guests tried hard to understand them. However - they discussed some broad meaningless topics like &ldquo;docker forces you to be more secure&rdquo;.</p></li>
+<li><p><strong>Netflix CDN and open-source</strong> (Netflix CDN и открытый код) - 4 out of 10. Convered the very basic topics. No technical details. &ldquo;We made out own CDN to reduce costs&rdquo;. Ok, cap.</p></li>
+<li><p><strong>The present and the future of recommender systems</strong> (Настоящее и будущее рекомендательных систем) - 6 out of 10. Not bad. Very basic but interesting speech.</p></li>
+</ol>
+
+
+<p>Unfortunately - that are the only sections i have watched.
+I wish i could listen to more &ldquo;Research&rdquo; talks.</p>
+
+<h3>God bless Yandex!</h3>
+]]></content>
+  </entry>
+  
+</feed>
