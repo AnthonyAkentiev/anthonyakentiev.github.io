@@ -9,7 +9,8 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="The news is good today: i&rsquo;ve finished &ldquo;In The Plex: How Google Thinks, Works, and Shapes Our Lives&rdquo; book. Brief I really liked this &hellip;">
+  <meta name="description" content="First thing people ask when you tell them about your project is &ldquo;what technology STACK do you use?&rdquo;.
+Let me begin: Stack Stack that i am &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +82,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/10/google-and-china/">Google and China</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/04/17/what-technologies-and-services-im-currently-using/">What Technologies and Services I&#8217;m Currently Using</a></h1>
     
     
       <p class="meta">
@@ -97,65 +98,74 @@
   
 
 
-<time datetime="2014-03-10T23:53:00+04:00" pubdate data-updated="true"></time>
+<time datetime="2014-04-17T01:14:00+04:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2014/03/10/google-and-china/#disqus_thread">Comments</a>
+         | <a href="/blog/2014/04/17/what-technologies-and-services-im-currently-using/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>The news is good today: i&rsquo;ve finished &ldquo;In The Plex: How Google Thinks, Works, and Shapes Our Lives&rdquo; book.</p>
+  <div class="entry-content"><p>First thing people ask when you tell them about your project is &ldquo;what technology STACK do you use?&rdquo;.
+Let me begin:</p>
 
-<p><img src="http://upload.wikimedia.org/wikipedia/en/9/95/In_the_Plex_Levy_2011.jpg" alt="" /></p>
+<h1>Stack</h1>
 
-<h1>Brief</h1>
+<p>Stack that i am currently using is called <a href="http://www.mean.io">&ldquo;MEAN&rdquo;</a>
+(MongoDB + Express + AngularJS + NodeJS) for short.
+Actually, I use different DataBases for different things:</p>
 
-<p>I really liked this book, even though it is not as interesting as <a href="http://anthonyakentiev.github.io/blog/2013/12/23/the-thriller">this one</a>, but it gives you a quick glimpse of what big-business in America is.</p>
+<p>For example - i use <strong>Redis</strong> as a quick key-value store and <strong>Memcache</strong> as a cache.</p>
 
-<p>What really inspired me - is that this book shows you - how you can redefine your future. You <strong>can</strong> build product(s) that will change people&rsquo;s lives.
-When you read books aboud Apple and Steve Jobs - you think that their success is some kind of &lsquo;magic&rsquo;, but the book about Google clearly declares that technology must be in the first place. No marketing or PR bull-shit. Ever.</p>
+<h2>Backend</h2>
 
-<p>Here is the <a href="http://www.amazon.com/Plex-Google-Thinks-Works-Shapes-ebook/dp/B003UYUP6M">link</a> to Amazon Store. The book is really big. It took me about 2 or 3 weeks to complete. There are many interesting things about Google in different periods. What i&rsquo;m going to &ldquo;review&rdquo; is a single chapter - Google invasion to China.</p>
+<p>As i sayed before - i use NodeJS with <strong>npm</strong> as a default package manager.
+I use <strong>Express</strong> for routing and processing, <strong>Cluster</strong> for load-balancing, <strong>Winston</strong> for logging, <strong>Mocha</strong> for tests, <strong>Nconf</strong> for configuration.</p>
 
-<p>There were many struggles with China, and it seems that many projects (even Android and Google Wave) were easier to implement than to open chineese office )). More on that in &lsquo;quotes section&rsquo;.</p>
+<h2>Frontend</h2>
 
-<h1>Quotes about China</h1>
+<p>I use Yo for templates, Bower/NPM as package managers, Grunt as a &ldquo;task runner&rdquo;.
+To build my web-site for debugging i just type:</p>
 
-<p>1) Most Chinese don&rsquo;t speak English. They will never use Google.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'> grunt server
+</span></code></pre></td></tr></table></div></figure>
 
-<p>2) Google needs to be more close to Chinese people.</p>
 
-<p>3) One woman seemed surprised that she&rsquo;s even be asked what search engine she uses. &ldquo;Baidu.&rdquo; Why? &ldquo;Because it is the product of Chinese people who naturally know more about China than Google&rdquo;, she said.</p>
+<p>This starts web server on localhost to connect to.</p>
 
-<p>4) But by then, many Chinese had written off Google as an unwelcome outsider with less reliable service.</p>
+<p>To build non-optimized version i just type:</p>
 
-<p>5) Baidu had succeeded in transforming the competition into a test of patriotism.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'> grunt build
+</span></code></pre></td></tr></table></div></figure>
 
-<p>6) Other offices think they are Google. The Beijing office thinks it&rsquo;s Google China.</p>
 
-<p>7) We&rsquo;d get these edicts from the Ministry of Information every day, and i had to sit there.</p>
+<p>To build optimized version i type:</p>
 
-<p>8) Your title is Product Manager&hellip; They objected that in China no one knew what that meant, and they preferred the official appellation of &ldquo;special assistant to Kai-Fu Lee&rdquo; ))</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'> grunt release
+</span></code></pre></td></tr></table></div></figure>
 
-<p>9) Kai-Fu Lee celebrity status had a downside. He became as much a part of the rumor mill as the celebrity female pop singers who dominated bulletin board discussions. Every time Google had a setback, word would appear that his departure was imminent ))</p>
 
-<p>10) An exact transliteration of Google was out of question: it sounded too much like Gou-Gou, which meant &ldquo;dog-dog&rdquo; ))</p>
+<p>This command does:
+less, cssmin, concat, ngmin, uglify, htmlmin, imagemin&hellip;</p>
 
-<p>11) Google angered the local press by not paying them &ldquo;red pockets&rdquo; (expense money that exceeded cab fare)</p>
+<h1>Online Services</h1>
 
-<p>12) Often manager of Internet-cafes would take money to replace one search engine with another. Google generally avoided such arrangements. But the company sometimes used representatives who weren&rsquo;t as finicky and looked the other way.</p>
+<p>Services i use are:
+Amazon: EC2, CloudFront, S3, Route53.</p>
 
-<p>13) It was as if the government was sending Google a message: you can be in our market, but you must not be the leader.</p>
+<p>Very cool service i use for online monitoring and performance tuning is <a href="http://newrelic.com/">NewRelic</a>.
+They e-mail me each time my server is &ldquo;too busy&rdquo; or down ))
+I will soon write an article about that. It is worth that.</p>
 
-<p>14) Wang explained that such acts are not uncommon in China, where there&rsquo;s a &ldquo;more fluid&rdquo; view of plagiarism.</p>
+<p><img src="http://anthonyakentiev.github.io/images/availability.png"></p>
 
-<p>15) It&rsquo;s not that i don&rsquo;t trust Chinese engineers, it&rsquo;s the same engineers as here, who went to the same schools, but when you go to a place like China, there&rsquo;s lots of examples of companies where intellectual property has gone out that door.</p>
+<p><img src="http://anthonyakentiev.github.io/images/perf.png"></p>
 
-<p>16) The officials were not impressed. &ldquo;This is the antiporn year,&rdquo; they said. &ldquo;You&rsquo;ve been warned twice before, and this is the third time. So we are going to punish you.&rdquo;</p>
-
-<p><strong>Stay tuned!</strong></p>
+<p>I highly recommend <a href="browserstack.com">browserstack</a> service to get screenshots of your site from different machines/browsers automatically.</p>
 </div>
   
   
@@ -178,6 +188,10 @@ When you read books aboud Apple and Steve Jobs - you think that their success is
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/03/30/new-books/">New Books</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/11/01/yac-2014-review/">YaC 2014 Review</a>
@@ -235,10 +249,6 @@ When you read books aboud Apple and Steve Jobs - you think that their success is
         <a href="/blog/2013/11/28/bdd-over-tdd/">BDD Over TDD</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/11/23/how-youd-design-this-system/">How You&#8217;d Design This System (pt.1)?</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -251,7 +261,7 @@ When you read books aboud Apple and Steve Jobs - you think that their success is
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Anton Akentiev -
+  Copyright &copy; 2015 - Anton Akentiev -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
