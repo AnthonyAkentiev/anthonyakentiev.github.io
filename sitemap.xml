@@ -1,99 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://AnthonyAkentiev.github.io/blog/2015/06/27/swift/</loc>
+    <lastmod>2015-06-27T23:32:32+06:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2015/03/30/new-books/</loc>
-    <lastmod>2015-03-30T20:07:51+03:00</lastmod>
+    <lastmod>2015-03-30T23:07:51+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/11/01/yac-2014-review/</loc>
-    <lastmod>2014-11-01T10:10:49+03:00</lastmod>
+    <lastmod>2014-11-01T13:10:49+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/06/26/add-more-value/</loc>
-    <lastmod>2014-06-26T21:47:00+04:00</lastmod>
+    <lastmod>2014-06-26T21:47:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/04/27/scrumtrek-architecture-course/</loc>
-    <lastmod>2014-04-27T23:35:00+04:00</lastmod>
+    <lastmod>2014-04-27T23:35:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/04/17/what-technologies-and-services-im-currently-using/</loc>
-    <lastmod>2014-04-17T01:14:00+04:00</lastmod>
+    <lastmod>2014-04-17T01:14:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/03/10/google-and-china/</loc>
-    <lastmod>2014-03-10T23:53:00+04:00</lastmod>
+    <lastmod>2014-03-10T23:53:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/02/24/to-zigzag-or-not-to-zigzag/</loc>
-    <lastmod>2014-02-24T22:56:00+04:00</lastmod>
+    <lastmod>2014-02-24T22:56:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past/</loc>
-    <lastmod>2014-02-02T22:10:00+04:00</lastmod>
+    <lastmod>2014-02-02T22:10:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/01/18/on-windowsphone8/</loc>
-    <lastmod>2014-01-18T22:47:00+04:00</lastmod>
+    <lastmod>2014-01-18T22:47:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2014/01/02/feeding-the-monster/</loc>
-    <lastmod>2014-01-02T17:14:00+04:00</lastmod>
+    <lastmod>2014-01-02T17:14:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2013/12/23/the-thriller/</loc>
-    <lastmod>2013-12-23T23:41:00+04:00</lastmod>
+    <lastmod>2013-12-23T23:41:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2013/12/15/the-launch-pad-book-review/</loc>
-    <lastmod>2013-12-15T23:47:00+04:00</lastmod>
+    <lastmod>2013-12-15T23:47:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2013/12/08/what-if-see-sharp-become-open-source/</loc>
-    <lastmod>2013-12-08T01:26:00+04:00</lastmod>
+    <lastmod>2013-12-08T01:26:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2013/12/03/on-ios-7-stability/</loc>
-    <lastmod>2013-12-03T01:09:00+04:00</lastmod>
+    <lastmod>2013-12-03T01:09:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd/</loc>
-    <lastmod>2013-11-28T01:02:00+04:00</lastmod>
+    <lastmod>2013-11-28T01:02:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/</loc>
-    <lastmod>2013-11-23T00:40:00+04:00</lastmod>
+    <lastmod>2013-11-23T00:40:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/2013/11/21/objective-c-syntatic-sugar-i-like/</loc>
-    <lastmod>2013-11-21T01:34:00+04:00</lastmod>
+    <lastmod>2013-11-21T01:34:00+06:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/blog/archives/</loc>
-    <lastmod>2015-03-31T01:24:11+03:00</lastmod>
+    <lastmod>2015-08-02T23:42:28+06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://AnthonyAkentiev.github.io/</loc>
-    <lastmod>2015-03-31T01:24:11+03:00</lastmod>
+    <lastmod>2015-08-02T23:42:28+06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

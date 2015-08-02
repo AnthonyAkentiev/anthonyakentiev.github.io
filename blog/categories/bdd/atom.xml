@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bdd | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/bdd/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2015-03-31T01:24:11+03:00</updated>
+  <updated>2015-08-02T23:42:28+06:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[BDD over TDD]]></title>
     <link href="http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd/"/>
-    <updated>2013-11-28T01:02:00+04:00</updated>
+    <updated>2013-11-28T01:02:00+06:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd</id>
     <content type="html"><![CDATA[<p>Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer - &ldquo;no tests, no product&rdquo;. Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory.</p>
 

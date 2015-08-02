@@ -4,7 +4,7 @@
   <title><![CDATA[Category: windows | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2015-03-31T01:24:11+03:00</updated>
+  <updated>2015-08-02T23:42:28+06:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Registry: from the dark past]]></title>
     <link href="http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past/"/>
-    <updated>2014-02-02T22:10:00+04:00</updated>
+    <updated>2014-02-02T22:10:00+06:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2014/02/02/registry-from-the-dark-past</id>
     <content type="html"><![CDATA[<p>That is my thoughts circa 2006-2008. Time has proven that <strong>simple</strong> and <strong>robust</strong> Unix way won.
 Today almost nobody uses Windows Registry for keeping internal data.

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: nodejs | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/nodejs/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2015-03-31T01:24:11+03:00</updated>
+  <updated>2015-08-02T23:42:28+06:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[What technologies and services i'm currently using]]></title>
     <link href="http://AnthonyAkentiev.github.io/blog/2014/04/17/what-technologies-and-services-im-currently-using/"/>
-    <updated>2014-04-17T01:14:00+04:00</updated>
+    <updated>2014-04-17T01:14:00+06:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2014/04/17/what-technologies-and-services-im-currently-using</id>
     <content type="html"><![CDATA[<p>First thing people ask when you tell them about your project is &ldquo;what technology STACK do you use?&rdquo;.
 Let me begin:</p>
@@ -77,7 +77,7 @@ I will soon write an article about that. It is worth that.</p>
   <entry>
     <title type="html"><![CDATA[BDD over TDD]]></title>
     <link href="http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd/"/>
-    <updated>2013-11-28T01:02:00+04:00</updated>
+    <updated>2013-11-28T01:02:00+06:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2013/11/28/bdd-over-tdd</id>
     <content type="html"><![CDATA[<p>Today i&rsquo;m going to talk a little bit about unit-tests. First rule of any programmer - &ldquo;no tests, no product&rdquo;. Unfortunately, i got used to it too late)) Of course there are always some exceptions to that rule, but in 95% of today tasks it is mandatory.</p>
 
@@ -251,7 +251,7 @@ Mocha is really the best of all (i pronounce it like &lsquo;mokka&rsquo;).</p>
   <entry>
     <title type="html"><![CDATA[How you'd design this system (pt.1)?]]></title>
     <link href="http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/"/>
-    <updated>2013-11-23T00:40:00+04:00</updated>
+    <updated>2013-11-23T00:40:00+06:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system</id>
     <content type="html"><![CDATA[<p>I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.</p>
 

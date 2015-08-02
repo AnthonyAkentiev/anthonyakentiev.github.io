@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: swift | C++/Python Jehad Fan Club]]></title>
+  <link href="http://AnthonyAkentiev.github.io/blog/categories/swift/atom.xml" rel="self"/>
+  <link href="http://AnthonyAkentiev.github.io/"/>
+  <updated>2015-08-02T23:42:28+06:00</updated>
+  <id>http://AnthonyAkentiev.github.io/</id>
+  <author>
+    <name><![CDATA[Anton Akentiev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[To Swift or not to Swift?]]></title>
+    <link href="http://AnthonyAkentiev.github.io/blog/2015/06/27/swift/"/>
+    <updated>2015-06-27T23:32:32+06:00</updated>
+    <id>http://AnthonyAkentiev.github.io/blog/2015/06/27/swift</id>
+    <content type="html"><![CDATA[<p>I am finishing my 3rd app written in Swift now&hellip;so i have pretty good view of pros/cons of that language. Some features i like, some don&rsquo;t. My point is that Swift is one of the best programming languages nowadays. Very easy to use and with tons of syntatic sugar that i like!</p>
+
+<p>Let&rsquo;s start with short &lsquo;features i don&rsquo;t like&rsquo; list and then continue with &lsquo;cool features&rsquo; list.</p>
+
+<h2>What i don&rsquo;t like:</h2>
+
+<h3>Variable declaration style</h3>
+
+<p>I hate these <em>var-s</em> )))</p>
+
+<pre><code class="swift ">var x: SomeClass = SomeClass()
+</code></pre>
+
+<h3>Swift works only on (iOS.version>=7)</h3>
+
+<p>Not a problem anymore:</p>
+
+<p><img src="/images/ios_usage.png" width="400"></p>
+
+<p>But when i just started using Swift it was.</p>
+
+<h3>Method names, internal/external names</h3>
+
+<p>Mostly because of compatibility - Apple left somewhat &ldquo;crazy&rdquo; naming scheme that we have seen in ObjC. It was good for ObjC, but i don&rsquo;t like it in Swift. I don&rsquo;t know why, but it looks very ugly here. I wish they&rsquo;d better remove it (unfortunately - not possible). The good thing about it - that you can name your methods as you like. Just don&rsquo;t use this naming scheme.</p>
+
+<pre><code class="swift ">// application...didFinishWithOptions...method ))
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool { 
+     return true 
+}
+
+// internal/external var names
+func join(string s1: String, toString s2: String, withJoiner joiner: String) -&gt; String {
+     return s1 + joiner + s2
+}
+</code></pre>
+
+<p>Second example. Trying to convert Objective C protocol:</p>
+
+<pre><code class="swift">- (void)recognizer:(YSKRecognizer *)recognizer didReceivePartialResults:(YSKRecognition *)results withEndOfUtterance:(BOOL)endOfUtterance;
+
+// The result is:
+func recognizer(recognizer: YSKRecognizer!, didReceivePartialResults results: YSKRecognition, withEndOfUtterance: Bool);
+</code></pre>
+
+<p>Holy crap!!!</p>
+
+<h3>&ldquo;Pascal&rdquo; variable definition syntax</h3>
+
+<p>The hardest thing is to use it after C/C++:</p>
+
+<pre><code class="swift">var sk: YSKSpeechKit = YSKSpeechKit()
+
+// One good thing about it that you can remove 
+// explicit type declaration and use auto type inference:
+var sk2 = YSKSpeechKit()
+</code></pre>
+
+<h3>Convenience Initializers</h3>
+
+<p>This feature makes things too complicated:</p>
+
+<p><img src="/images/swift_convenience.png" width="600"></p>
+
+<h3>Codestyle is under attack!</h3>
+
+<pre><code class="swift">// this line will be compiled
+if env["DEBUG_MODE"] != nil {}
+
+// and this line won't 
+if env["DEBUG_MODE"]!=nil {}
+</code></pre>
+
+<h3>String vs NSString (and other pure vs NS* classes)</h3>
+
+<p>Since Xcode 6.3 (Swift 1.2) String is not interchangeable with NSString and requires explicit operator &ldquo;as!”. It broke my apps.
+But i don&rsquo;t consider it as a &lsquo;problem&rsquo;, it was only my fault that i forgot to use native types (like String and Int) when porting my app from ObjC.</p>
+
+<h3>Mutating</h3>
+
+<p>I don’t like ‘mutating’ keyword for structures/enums. This reminds me of &lsquo;mutable&rsquo; keyword in C++ (that always smelled like workaround). I’d rather prefer Apple keep them immutable forever.</p>
+
+<h3>Weird syntax for closures</h3>
+
+<p>I don&rsquo;t like how blocks and closures are defined in Swift. See this closures with &lsquo;in&rsquo; and no curly braces. It makes me mad.</p>
+
+<pre><code class="swift">
+// 1 - get data from server
+let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+appDelegate.netOps.getDataWithToken(
+     token,
+     andShortId:shortId,
+     completionHandler:{(result:Bool, isNoInternetConnection:Bool, dict:NSDictionary, errFromServer:String!) -&gt; Void in
+
+          NSOperationQueue.mainQueue().addOperationWithBlock() { () in
+               DDLogDebug("Get data completed with result: \(result)")
+
+               if(!result){
+                    self.processAsyncError(isNoInternetConnection,errFromServer:errFromServer)
+                    return
+               }
+
+               // 2 - process data
+               self.processGetTag(dict)
+          }
+     }
+)
+</code></pre>
+
+<p>Many languages that feature closures/lambdas have syntax problems and Swift is no exception.</p>
+
+<h3>Still many legacy issues</h3>
+
+<p>In some rare cases ObjC legacy is very annoying:
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">onYesClicked</span><span class="p">(</span><span class="nl">action</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+</span><span class='line'>     <span class="n">DDLogDebug</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Copying</span> <span class="n">photo</span> <span class="n">to</span> <span class="nl">gallery</span><span class="p">:</span> <span class="p">(</span><span class="n">getImageName</span><span class="p">())</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>      <span class="k">if</span> <span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="n">getImage</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>           <span class="n">UIImageWriteToSavedPhotosAlbum</span><span class="p">(</span>
+</span><span class='line'>                     <span class="n">image</span><span class="p">,</span>
+</span><span class='line'>                     <span class="nb">self</span><span class="p">,</span>
+</span><span class='line'>                     <span class="n">Selector</span><span class="p">(</span><span class="s">&quot;image:didFinishSavingWithError:contextInfo:&quot;</span><span class="p">),</span>
+</span><span class='line'>                     <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">func</span> <span class="n">image</span><span class="p">(</span>
+</span><span class='line'>     <span class="nl">image</span><span class="p">:</span> <span class="bp">UIImage</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>     <span class="n">didFinishSavingWithError</span> <span class="nl">error</span><span class="p">:</span><span class="bp">NSError</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>     <span class="nl">contextInfo</span><span class="p">:</span><span class="n">UnsafePointer</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>     <span class="c1">// &amp;hellip;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>Good things:</h2>
+
+<h3>The best thing in Swift - Optionals</h3>
+
+<p>If you ask me - what is the coolest Swift feature - the answer is short - optionals!</p>
+
+<p>No <em>promises</em>. No <em>futures</em>. No <em>exceptions</em>. Only optionals.
+It makes error processing convenient and easy. And there is one more use case that i&rsquo;ve found - optionals allows you to &lsquo;remove&rsquo; some controls from storyboard and your code will still work:</p>
+
+<pre><code class="swift ">class SyncController: UIViewController {
+     enum DlgFor {
+          case Nothing
+          case SyncSucceeded
+          case SyncFailed
+     }
+
+     var dlgFor: DlgFor = DlgFor.Nothing
+
+     var isDownloading: Bool = false
+     var isUploading: Bool = false
+     var currFile: Int = 0
+     var totalFiles: Int = 0
+     var downloadFileSize: Int64 = 0
+
+     // Optionals!
+     // Storyboard has only one of them connected to controls
+     @IBOutlet var progressFiles: UIProgressView?
+     @IBOutlet var progressBytes: UIProgressView?
+     ...
+}
+</code></pre>
+
+<p>p.s.
+Notice that Swift 2.0 has exceptions built-in (((</p>
+
+<h3>Good syntax</h3>
+
+<ul>
+<li>I like &lsquo;var/let&rsquo; syntax without &lsquo;const&rsquo; keyword.</li>
+<li>I like switch/case/enum syntax (see above).</li>
+<li>I like immediate initialization right where class member is defined (see above).</li>
+<li>I like that no &lsquo;include&rsquo; word is required and all definitions are visible from within your module/project (still &lsquo;import&rsquo; required).</li>
+<li>I like how arrays are declared.</li>
+</ul>
+
+
+<h3>Built-in tuples</h3>
+
+<pre><code class="swift ">func isMergeNeeded(serverData:NSDictionary)-&gt;(needMerge:Bool,action:MergeAction){
+     // 1 - get tag. if tag is "fresh" -&gt; server is empty
+     var tag: String = getTagFromData(serverData)
+     if(tag == "111"){
+          // push everything to server
+          return (false, MergeAction.UseLocalData)
+     }
+
+     return (true, MergeAction.DoNothing)
+}
+
+let mergeRet = isMergeNeeded(appDelegate.model.newData)
+if(mergeRet.needMerge){
+     // ...
+}
+</code></pre>
+
+<h3>More strictness - less problems</h3>
+
+<ul>
+<li>default case is required in switch!</li>
+<li>no &lsquo;break&rsquo; in case (eat this, C/C++)</li>
+<li>you <strong>HAVE TO</strong> initialise non-optional variables in your class. Yeah!</li>
+</ul>
+
+
+<h3>Weak references/Lazy Stored Properties built-in</h3>
+
+<p>Some say that laziness is bad because you can&rsquo;t control object&rsquo;s lifetime. It brings demise. Swift has laziness only as a ad-hoc feature. If you need it - use it. If you don&rsquo;t - don&rsquo;t use it. This is very different from Haskell&rsquo;s laziness (for example). Haskell requires you to use lazy structures. All lazy inits can be removed in your code and converted to initialization with closures.</p>
+
+<pre><code class="swift">lazy var players: [String] = {
+     var temporaryPlayers = [String]()
+     temporaryPlayers.append("John Doe")
+     return temporaryPlayers
+}()
+
+// weak reference to prevent reference count cycle
+class Person {
+     let name: String
+     init(name: String) { self.name = name }
+     var apartment: Apartment?
+}
+
+class Apartment {
+     let number: Int
+     init(number: Int) { self.number = number }
+     weak var tenant: Person?
+}
+
+// An unowned reference will never become nil during it's lifetime
+unowned var school = ...
+</code></pre>
+
+<h3>Some functional features are already here</h3>
+
+<p>Closures, tuples, immutability, functions as first class citizens, lazy properties, etc.
+Swift is not a Haskell, not even a Scala. But some cool functional stuff is never bad.</p>
+
+<pre><code class="swift">applyMutliplication(2, {$0 * 6})
+</code></pre>
+
+<h3>Swift is faster than ObjC</h3>
+
+<p>Not a big deal, but a little &lsquo;one more thing&rsquo;.</p>
+
+<h3>I like string formatting style</h3>
+
+<p>Awesome!</p>
+
+<pre><code class="swift">     // Just like that! 
+     DDLogDebug("Copying photo to gallery: \(getImageName())")
+</code></pre>
+
+<h3>Swift is compatible with ObjC</h3>
+
+<ul>
+<li>You can use ObjC in your Swift (&ldquo;Mix and match&rdquo;) project (and vice versa) using Bridiging Headers.</li>
+<li>You can cast void* to UnsafePointer<Void>.</li>
+<li>You can still use Selectors, but it is recommended to use them only for compatibility with ObjC code/frameworks.</li>
+</ul>
+
+
+<h3>Still got nil</h3>
+
+<p>The good thing about nil is that it is not equal to binary zero. In C/C++ NULL/null pointer is A VALID pointer into the memory from the language perspective. However - no known computer architecture allows NULL pointer to be dereferenced without exception. So 0 pointer is used as &ldquo;not initialized&rdquo; flag. Nil is a good abstract thing. &lsquo;Not a pointer&rsquo; should be different from &lsquo;pointer to zero&rsquo;.</p>
+
+<h1>Final words</h1>
+
+<p>I really like Swift. Apple did a good job. C# is still more powerful, but as an ObjC replacement - Swift is very convenient and useful. It is easy to lear, easy to use and a <strong>well-balanced</strong> language.</p>
+]]></content>
+  </entry>
+  
+</feed>

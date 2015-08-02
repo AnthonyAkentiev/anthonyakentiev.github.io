@@ -4,7 +4,7 @@
   <title><![CDATA[Category: https | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/https/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2015-03-31T01:24:11+03:00</updated>
+  <updated>2015-08-02T23:42:28+06:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[How you'd design this system (pt.1)?]]></title>
     <link href="http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system/"/>
-    <updated>2013-11-23T00:40:00+04:00</updated>
+    <updated>2013-11-23T00:40:00+06:00</updated>
     <id>http://AnthonyAkentiev.github.io/blog/2013/11/23/how-youd-design-this-system</id>
     <content type="html"><![CDATA[<p>I met one of my friends today. We&rsquo;ve been discussing (for about 2 hours) web processing system he has designed. I am going to show you (and him) my vision of that product and a little bit of real working code. Of course, i am not aware of all requirements and constraints (he-he), so that is just a sketch.</p>
 
