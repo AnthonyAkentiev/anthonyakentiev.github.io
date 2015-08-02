@@ -4,7 +4,7 @@
   <title><![CDATA[Category: swift | C++/Python Jehad Fan Club]]></title>
   <link href="http://AnthonyAkentiev.github.io/blog/categories/swift/atom.xml" rel="self"/>
   <link href="http://AnthonyAkentiev.github.io/"/>
-  <updated>2015-08-02T23:49:26+06:00</updated>
+  <updated>2015-08-02T23:54:32+06:00</updated>
   <id>http://AnthonyAkentiev.github.io/</id>
   <author>
     <name><![CDATA[Anton Akentiev]]></name>
@@ -23,13 +23,6 @@
 <p>Let&rsquo;s start with short &lsquo;features i don&rsquo;t like&rsquo; list and then continue with &lsquo;cool features&rsquo; list.</p>
 
 <h2>What i don&rsquo;t like:</h2>
-
-<h3>Variable declaration style</h3>
-
-<p>I hate these <em>var-s</em> )))</p>
-
-<pre><code class="swift ">var x: SomeClass = SomeClass()
-</code></pre>
 
 <h3>Swift works only on (iOS.version>=7)</h3>
 
