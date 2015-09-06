@@ -9,8 +9,7 @@
   <meta name="author" content="Anton Akentiev">
 
   
-  <meta name="description" content="1
-Read books are far less valuable than unread ones (&quot;Black Swan&quot; by Nassim Taleb) Hey-hey-hey, i&rsquo;m back. I was missing for about 5 &hellip;">
+  <meta name="description" content="I am finishing my 3rd app written in Swift now&hellip;so i have pretty good view of pros/cons of that language. Some features i like, some don&rsquo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +81,7 @@ Read books are far less valuable than unread ones (&quot;Black Swan&quot; by Nas
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/03/30/new-books/">New Books</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/06/27/swift/">To Swift or Not to Swift?</a></h1>
     
     
       <p class="meta">
@@ -98,91 +97,412 @@ Read books are far less valuable than unread ones (&quot;Black Swan&quot; by Nas
   
 
 
-<time datetime="2015-03-30T23:07:51+06:00" pubdate data-updated="true"></time>
+<time datetime="2015-06-27T23:32:32+06:00" pubdate data-updated="true"></time>
         
-         | <a href="/blog/2015/03/30/new-books/#disqus_thread">Comments</a>
+         | <a href="/blog/2015/06/27/swift/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Read</span> <span class="nx">books</span> <span class="nx">are</span> <span class="nx">far</span> <span class="nx">less</span> <span class="nx">valuable</span> <span class="nx">than</span> <span class="nx">unread</span> <span class="nx">ones</span> <span class="p">(</span><span class="s2">&quot;Black Swan&quot;</span> <span class="nx">by</span> <span class="nx">Nassim</span> <span class="nx">Taleb</span><span class="p">)</span>
+  <div class="entry-content"><p>I am finishing my 3rd app written in Swift now&hellip;so i have pretty good view of pros/cons of that language. Some features i like, some don&rsquo;t. My point is that Swift is one of the best programming languages nowadays. Very easy to use and with tons of syntatic sugar that i like!</p>
+
+<p>Let&rsquo;s start with short &lsquo;features i don&rsquo;t like&rsquo; list and then continue with &lsquo;cool features&rsquo; list.</p>
+
+<h2>What i don&rsquo;t like:</h2>
+
+<h3>Swift works only on (iOS.version>=7)</h3>
+
+<p>Not a problem anymore:</p>
+
+<p><img src="/images/ios_usage.png" width="400"></p>
+
+<p>But when i just started using Swift it was.</p>
+
+<h3>Method names, internal/external names</h3>
+
+<p>Mostly because of compatibility - Apple left somewhat &ldquo;crazy&rdquo; naming scheme that we have seen in ObjC. It was good for ObjC, but i don&rsquo;t like it in Swift. I don&rsquo;t know why, but it looks very ugly here. I wish they&rsquo;d better remove it (unfortunately - not possible). The good thing about it - that you can name your methods as you like. Just don&rsquo;t use this naming scheme.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="c1">// application...didFinishWithOptions...method ))</span>
+</span><span class='line'><span class="k">func</span> <span class="n">application</span><span class="p">(</span><span class="nl">application</span><span class="p">:</span> <span class="bp">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nl">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSObject</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">]</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">return</span> <span class="nb">true</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// internal/external var names</span>
+</span><span class='line'><span class="k">func</span> <span class="n">join</span><span class="p">(</span><span class="n">string</span> <span class="nl">s1</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">toString</span> <span class="nl">s2</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">withJoiner</span> <span class="nl">joiner</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">return</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">joiner</span> <span class="o">+</span> <span class="n">s2</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Hey-hey-hey, i&rsquo;m back. I was missing for about 5 month, it&rsquo;s time to update my little blog. I read whole bunch of books during this period of time. So this post is (again) a book-review. Let&rsquo;s select 5 most interesting <em>non-tech</em> books that i&rsquo;ve finished. Here they are:</p>
+<p>Second example. Trying to convert Objective C protocol:</p>
 
-<h2>The signal and the noise: Why So Many Predictions Fail&ndash;but Some Don&rsquo;t</h2>
-
-<p><img src="/images/SignalAndTheNoise.jpg" width="300"></p>
-
-<p>Wow. 9 out of 10. Very entertaining book about statistics, common misconceptions, prediction, probability, economics, forecasting earthquakes, etc.
-The best book in this review, i think. Go and get one.</p>
-
-<h2>The hard thing about hard things: Building a Business When There Are No Easy Answers</h2>
-
-<p><img src="/images/HardThings.jpg" width="300"></p>
-
-<p>The author is widely known Ben Horowitz - co-founder of Andreessen Horowitz venture capital company. Mustread. Couple of quotes for you:</p>
-
-<blockquote><p>The hard thing isn&#8217;t (about) setting a big, hairy, audacious goal. The hard thing is laying people off when you miss the big goal. The hard thing is when those &#8220;great people&#8221; develop a sense of entitlement and start demanding unreasonable things.</p></blockquote>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">recognizer:</span><span class="p">(</span><span class="n">YSKRecognizer</span> <span class="o">*</span><span class="p">)</span><span class="nv">recognizer</span> <span class="nf">didReceivePartialResults:</span><span class="p">(</span><span class="n">YSKRecognition</span> <span class="o">*</span><span class="p">)</span><span class="nv">results</span> <span class="nf">withEndOfUtterance:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">endOfUtterance</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// The result is:</span>
+</span><span class='line'><span class="k">func</span> <span class="nf">recognizer</span><span class="p">(</span><span class="nl">recognizer</span><span class="p">:</span> <span class="n">YSKRecognizer</span><span class="o">!</span><span class="p">,</span> <span class="n">didReceivePartialResults</span> <span class="nl">results</span><span class="p">:</span> <span class="n">YSKRecognition</span><span class="p">,</span> <span class="nl">withEndOfUtterance</span><span class="p">:</span> <span class="n">Bool</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Holy crap!!!</p>
+
+<h3>&ldquo;Pascal&rdquo; variable definition syntax</h3>
+
+<p>The hardest thing is to use it after C/C++:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="nl">sk</span><span class="p">:</span> <span class="n">YSKSpeechKit</span> <span class="o">=</span> <span class="n">YSKSpeechKit</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// One good thing about it that you can remove </span>
+</span><span class='line'><span class="c1">// explicit type declaration and use auto type inference:</span>
+</span><span class='line'><span class="k">var</span> <span class="n">sk2</span> <span class="o">=</span> <span class="n">YSKSpeechKit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<blockquote><p>Most business relationships either become too tense to tolerate or not tense enough to be productive after a while. Either people challenge each other to the point where they don&#8217;t like each other or they become complacent about each other&#8217;s feedback and no longer benefit from the relationship.</p></blockquote>
+<h3>Convenience Initializers</h3>
+
+<p>This feature makes things too complicated:</p>
+
+<p><img src="/images/swift_convenience.png" width="600"></p>
+
+<h3>Codestyle is under attack!</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="c1">// this line will be compiled</span>
+</span><span class='line'><span class="k">if</span> <span class="n">env</span><span class="p">[</span><span class="s">&quot;DEBUG_MODE&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">nil</span> <span class="p">{}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// and this line won&#39;t </span>
+</span><span class='line'><span class="k">if</span> <span class="n">env</span><span class="p">[</span><span class="s">&quot;DEBUG_MODE&quot;</span><span class="p">]</span><span class="o">!=</span><span class="nb">nil</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<h3>String vs NSString (and other pure vs NS* classes)</h3>
+
+<p>Since Xcode 6.3 (Swift 1.2) String is not interchangeable with NSString and requires explicit operator &ldquo;as!”. It broke my apps.
+But i don&rsquo;t consider it as a &lsquo;problem&rsquo;, it was only my fault that i forgot to use native types (like String and Int) when porting my app from ObjC.</p>
+
+<h3>Mutating</h3>
+
+<p>I don’t like ‘mutating’ keyword for structures/enums. This reminds me of &lsquo;mutable&rsquo; keyword in C++ (that always smelled like workaround). I’d rather prefer Apple keep them immutable forever.</p>
+
+<h3>Weird syntax for closures</h3>
+
+<p>I don&rsquo;t like how blocks and closures are defined in Swift. See this closures with &lsquo;in&rsquo; and no curly braces. It makes me mad.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="c1">// 1 - get data from server</span>
+</span><span class='line'><span class="k">let</span> <span class="n">appDelegate</span> <span class="o">=</span> <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">delegate</span> <span class="kt">as</span><span class="o">!</span> <span class="n">AppDelegate</span>
+</span><span class='line'><span class="n">appDelegate</span><span class="p">.</span><span class="n">netOps</span><span class="p">.</span><span class="n">getDataWithToken</span><span class="p">(</span>
+</span><span class='line'>     <span class="n">token</span><span class="p">,</span>
+</span><span class='line'>     <span class="nl">andShortId</span><span class="p">:</span><span class="n">shortId</span><span class="p">,</span>
+</span><span class='line'>     <span class="nl">completionHandler</span><span class="p">:{(</span><span class="nl">result</span><span class="p">:</span><span class="n">Bool</span><span class="p">,</span> <span class="nl">isNoInternetConnection</span><span class="p">:</span><span class="n">Bool</span><span class="p">,</span> <span class="nl">dict</span><span class="p">:</span><span class="bp">NSDictionary</span><span class="p">,</span> <span class="nl">errFromServer</span><span class="p">:</span><span class="n">String</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="k">in</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span><span class="p">().</span><span class="n">addOperationWithBlock</span><span class="p">()</span> <span class="p">{</span> <span class="p">()</span> <span class="k">in</span>
+</span><span class='line'>               <span class="n">DDLogDebug</span><span class="p">(</span><span class="s">&quot;Get data completed with result: \(result)&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>               <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">){</span>
+</span><span class='line'>                    <span class="nb">self</span><span class="p">.</span><span class="n">processAsyncError</span><span class="p">(</span><span class="n">isNoInternetConnection</span><span class="p">,</span><span class="nl">errFromServer</span><span class="p">:</span><span class="n">errFromServer</span><span class="p">)</span>
+</span><span class='line'>                    <span class="k">return</span>
+</span><span class='line'>               <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>               <span class="c1">// 2 - process data</span>
+</span><span class='line'>               <span class="nb">self</span><span class="p">.</span><span class="n">processGetTag</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<blockquote><p>My single biggest personal improvement as CEO occured on the day when i stopped being too positive.</p></blockquote>
+<p>Many languages that feature closures/lambdas have syntax problems and Swift is no exception.</p>
+
+<h3>Still many legacy issues</h3>
+
+<p>In some rare cases ObjC legacy is very annoying:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">onYesClicked</span><span class="p">(</span><span class="nl">action</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+</span><span class='line'>     <span class="n">DDLogDebug</span><span class="p">(</span><span class="s">&quot;Copying photo to gallery: \(getImageName())&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="k">if</span> <span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="n">getImage</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>               <span class="n">UIImageWriteToSavedPhotosAlbum</span><span class="p">(</span>
+</span><span class='line'>                         <span class="n">image</span><span class="p">,</span>
+</span><span class='line'>                         <span class="nb">self</span><span class="p">,</span>
+</span><span class='line'>                         <span class="n">Selector</span><span class="p">(</span><span class="s">&quot;image:didFinishSavingWithError:contextInfo:&quot;</span><span class="p">),</span>
+</span><span class='line'>                         <span class="nb">nil</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">func</span> <span class="nf">image</span><span class="p">(</span>
+</span><span class='line'>     <span class="nl">image</span><span class="p">:</span> <span class="bp">UIImage</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>     <span class="n">didFinishSavingWithError</span> <span class="nl">error</span><span class="p">:</span><span class="bp">NSError</span><span class="o">!</span><span class="p">,</span>
+</span><span class='line'>     <span class="nl">contextInfo</span><span class="p">:</span><span class="n">UnsafePointer</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>     <span class="c1">// ...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>The Black Swan</h2>
+<h2>Good things:</h2>
 
-<p><img src="/images/BlackSwan.jpg" width="300"></p>
+<h3>The best thing in Swift - Optionals</h3>
 
-<p><strong>Classics</strong>.</p>
+<p>If you ask me - what is the coolest Swift feature - the answer is short - optionals!</p>
 
-<p>From Wikipedia: &ldquo;The black swan theory or theory of black swan events is a metaphor that describes an event that comes as a surprise, has a major effect, and is often inappropriately rationalized after the fact with the benefit of hindsight&rdquo;. The event that comes as a black swan can&rsquo;t be &ldquo;risk managed&rdquo;. Remember 9/11 or recent economic crisis. These event are out of our scale of &ldquo;risk management&rdquo;.</p>
+<p>No <em>promises</em>. No <em>futures</em>. No <em>exceptions</em>. Only optionals.
+It makes error processing convenient and easy. And there is one more use case that i&rsquo;ve found - optionals allows you to &lsquo;remove&rsquo; some controls from storyboard and your code will still work:</p>
 
-<p>Good but somewhat &ldquo;questionable&rdquo; book. Very interesting and mind-blowing. I recommend &ldquo;Fooled by Randomness&rdquo; (first one by Nassim Taleb) too.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">class</span> <span class="nl">SyncController</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">enum</span> <span class="n">DlgFor</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">case</span> <span class="n">Nothing</span>
+</span><span class='line'>          <span class="k">case</span> <span class="n">SyncSucceeded</span>
+</span><span class='line'>          <span class="k">case</span> <span class="n">SyncFailed</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">dlgFor</span><span class="p">:</span> <span class="n">DlgFor</span> <span class="o">=</span> <span class="n">DlgFor</span><span class="p">.</span><span class="n">Nothing</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">isDownloading</span><span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">isUploading</span><span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="nb">false</span>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">currFile</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">totalFiles</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">downloadFileSize</span><span class="p">:</span> <span class="n">Int64</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="c1">// Optionals!</span>
+</span><span class='line'>     <span class="c1">// Storyboard has only one of them connected to controls</span>
+</span><span class='line'>     <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">var</span> <span class="nl">progressFiles</span><span class="p">:</span> <span class="bp">UIProgressView</span><span class="o">?</span>
+</span><span class='line'>     <span class="p">@</span><span class="kt">IBOutlet</span> <span class="k">var</span> <span class="nl">progressBytes</span><span class="p">:</span> <span class="bp">UIProgressView</span><span class="o">?</span>
+</span><span class='line'>     <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h2>EDGY conversations: How Ordinary People Can Achieve Outrageous Success</h2>
 
-<p><img src="/images/Edgy.jpg" width="300"></p>
+<p>p.s.
+Notice that Swift 2.0 has exceptions built-in (((</p>
 
-<blockquote><p>You have to be more. You have to desperately want more. You have to care more. It matters that you waste time. It matters that you blame others for your failures. It matters that you are lazy at times.</p></blockquote>
+<h3>Good syntax</h3>
 
-
-<p>The book is very good motivational read. If you need some motivation - read this book.
-Main idea: hard-work is everything. You can do more than you think. There is nothing more to remember. 5 out of 10.</p>
-
-<h2>Good to great: Why Some Companies Make The Leap And Others Don&rsquo;t</h2>
-
-<p><img src="/images/GoodToGreat.jpg" width="300"></p>
-
-<p>Good is OK, but GREAT is way better. If you want to lead - you have to be great. The book is aimed primarily for the owners of a big company. However - many things are applicable for small startups. Main ideas that i remember )) goes here:</p>
-
-<ol>
-<li><strong>Level 5 leaders</strong> - no comment. Read the book.</li>
-<li><strong>Hedgehog concept</strong> - do one thing, but do it GREAT.</li>
-<li><strong>Crawl, walk, run</strong> - don&rsquo;t run when you see some opportunities. Keep thinking, then walk, only then run.</li>
-<li><strong>There is no &ldquo;miracle moment&rdquo;</strong> - there is no one single &ldquo;miracle point&rdquo; how Google did it. It is all about continuous development.</li>
-<li><strong>First-people, then-what</strong> - you need to understand your strengths and weaknesses before you can plan to succeed.</li>
-</ol>
+<ul>
+<li>I like &lsquo;var/let&rsquo; syntax without &lsquo;const&rsquo; keyword.</li>
+<li>I like switch/case/enum syntax (see above).</li>
+<li>I like immediate initialization right where class member is defined (see above).</li>
+<li>I like that no &lsquo;include&rsquo; word is required and all definitions are visible from within your module/project (still &lsquo;import&rsquo; required).</li>
+<li>I like how arrays are declared.</li>
+</ul>
 
 
-<p>One final qoute (not the most interesting one, but&hellip;) for you:</p>
+<h3>Built-in tuples</h3>
 
-<blockquote><p>No company can grow revenues consistently faster than its ability to get enough of the right people to implement that growth and still become a great company.</p></blockquote>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">isMergeNeeded</span><span class="p">(</span><span class="nl">serverData</span><span class="p">:</span><span class="bp">NSDictionary</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">(</span><span class="nl">needMerge</span><span class="p">:</span><span class="n">Bool</span><span class="p">,</span><span class="nl">action</span><span class="p">:</span><span class="n">MergeAction</span><span class="p">){</span>
+</span><span class='line'>     <span class="c1">// 1 - get tag. if tag is &quot;fresh&quot; -&gt; server is empty</span>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">tag</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="n">getTagFromData</span><span class="p">(</span><span class="n">serverData</span><span class="p">)</span>
+</span><span class='line'>     <span class="k">if</span><span class="p">(</span><span class="n">tag</span> <span class="o">==</span> <span class="s">&quot;111&quot;</span><span class="p">){</span>
+</span><span class='line'>          <span class="c1">// push everything to server</span>
+</span><span class='line'>          <span class="k">return</span> <span class="p">(</span><span class="nb">false</span><span class="p">,</span> <span class="n">MergeAction</span><span class="p">.</span><span class="n">UseLocalData</span><span class="p">)</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="k">return</span> <span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="n">MergeAction</span><span class="p">.</span><span class="n">DoNothing</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">let</span> <span class="n">mergeRet</span> <span class="o">=</span> <span class="n">isMergeNeeded</span><span class="p">(</span><span class="n">appDelegate</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">newData</span><span class="p">)</span>
+</span><span class='line'><span class="k">if</span><span class="p">(</span><span class="n">mergeRet</span><span class="p">.</span><span class="n">needMerge</span><span class="p">){</span>
+</span><span class='line'>     <span class="c1">// ...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>The book is OK, but too &ldquo;dense&rdquo; and long. I wish it could be more entertaining and easy to read.</p>
+<h3>More strictness - less problems</h3>
 
-<p>Thanks for coming!</p>
+<ul>
+<li>default case is required in switch!</li>
+<li>no &lsquo;break&rsquo; in case (eat this, C/C++)</li>
+<li>you <strong>HAVE TO</strong> initialise non-optional variables in your class. Yeah!</li>
+</ul>
+
+
+<h3>Weak references/Lazy Stored Properties built-in</h3>
+
+<p>Some say that laziness is bad because you can&rsquo;t control object&rsquo;s lifetime. It brings demise. Swift has laziness only as a ad-hoc feature. If you need it - use it. If you don&rsquo;t - don&rsquo;t use it. This is very different from Haskell&rsquo;s laziness (for example). Haskell requires you to use lazy structures. All lazy inits can be removed in your code and converted to initialization with closures.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">lazy</span> <span class="k">var</span> <span class="nl">players</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">var</span> <span class="n">temporaryPlayers</span> <span class="o">=</span> <span class="p">[</span><span class="n">String</span><span class="p">]()</span>
+</span><span class='line'>     <span class="n">temporaryPlayers</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">)</span>
+</span><span class='line'>     <span class="k">return</span> <span class="n">temporaryPlayers</span>
+</span><span class='line'><span class="p">}()</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// weak reference to prevent reference count cycle</span>
+</span><span class='line'><span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+</span><span class='line'>     <span class="k">init</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
+</span><span class='line'>     <span class="k">var</span> <span class="nl">apartment</span><span class="p">:</span> <span class="n">Apartment</span><span class="o">?</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="n">Apartment</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">let</span> <span class="nl">number</span><span class="p">:</span> <span class="n">Int</span>
+</span><span class='line'>     <span class="k">init</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="p">}</span>
+</span><span class='line'>     <span class="k">weak</span> <span class="k">var</span> <span class="nl">tenant</span><span class="p">:</span> <span class="n">Person</span><span class="o">?</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// An unowned reference will never become nil during it&#39;s lifetime</span>
+</span><span class='line'><span class="kr">unowned</span> <span class="k">var</span> <span class="n">school</span> <span class="o">=</span> <span class="p">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Some functional features are already here</h3>
+
+<p>Closures, tuples, immutability, functions as first class citizens, lazy properties, etc.
+Swift is not a Haskell, not even a Scala. But some cool functional stuff is never bad.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="n">applyMutliplication</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="err">$</span><span class="mi">0</span> <span class="o">*</span> <span class="mi">6</span><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Swift is faster than ObjC</h3>
+
+<p>Not a big deal, but a little &lsquo;one more thing&rsquo;.</p>
+
+<h3>I like string formatting style</h3>
+
+<p>Awesome!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'> <span class="c1">// Just like that! </span>
+</span><span class='line'> <span class="n">DDLogDebug</span><span class="p">(</span><span class="s">&quot;Copying photo to gallery: \(getImageName())&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Swift is compatible with ObjC</h3>
+
+<ul>
+<li>You can use ObjC in your Swift (&ldquo;Mix and match&rdquo;) project (and vice versa) using Bridiging Headers.</li>
+<li>You can cast void* to UnsafePointer<Void>.</li>
+<li>You can still use Selectors, but it is recommended to use them only for compatibility with ObjC code/frameworks.</li>
+</ul>
+
+
+<h3>Still got nil</h3>
+
+<p>The good thing about nil is that it is not equal to binary zero. In C/C++ NULL/null pointer is A VALID pointer into the memory from the language perspective. However - no known computer architecture allows NULL pointer to be dereferenced without exception. So 0 pointer is used as &ldquo;not initialized&rdquo; flag. Nil is a good abstract thing. &lsquo;Not a pointer&rsquo; should be different from &lsquo;pointer to zero&rsquo;.</p>
+
+<h1>Final words</h1>
+
+<p>I really like Swift. Apple did a good job. C# is still more powerful, but as an ObjC replacement - Swift is very convenient and useful. It is easy to learn, easy to use and a <strong>well-balanced</strong> language.</p>
 </div>
   
   
@@ -205,6 +525,10 @@ Main idea: hard-work is everything. You can do more than you think. There is not
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/08/29/more-books/">More (Non-technical) Books</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/06/27/swift/">To Swift or Not to Swift?</a>
@@ -260,10 +584,6 @@ Main idea: hard-work is everything. You can do more than you think. There is not
     
       <li class="post">
         <a href="/blog/2013/12/08/what-if-see-sharp-become-open-source/">What if C# Became Open-source?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/03/on-ios-7-stability/">On iOS 7 Stability</a>
       </li>
     
   </ul>
